@@ -2,7 +2,7 @@
 aliases: 
 tags:
   - 学习/Obsidian
-date updated: 20220621 11:47
+date updated: 20220623 03:27
 date created: 20220111 01:36
 date modified: 20220111 01:30
 ---
@@ -20,6 +20,7 @@ date modified: 20220111 01:30
 - Tasks![[Tasks#^ecce79]]
 - Excalidraw![[Excalidraw#^4c2c9a]]
 - DataView![[DataView#^5caecf]]
+- Obsidian git![[Obsidian git#^71d94e]]
 
 ## 界面类
 
