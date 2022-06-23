@@ -1,0 +1,110 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Thu Aug 12 22:17:15 2021
+# Process ID: 17976
+# Current directory: D:/OneDrive - The Pennsylvania State University/Penn State Summer 2021/CE 331/Lab/Project/CPU_Proj
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12524 D:\OneDrive - The Pennsylvania State University\Penn State Summer 2021\CE 331\Lab\Project\CPU_Proj\CPU_Proj.xpr
+# Log file: D:/OneDrive - The Pennsylvania State University/Penn State Summer 2021/CE 331/Lab/Project/CPU_Proj/vivado.log
+# Journal file: D:/OneDrive - The Pennsylvania State University/Penn State Summer 2021/CE 331/Lab/Project/CPU_Proj\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {D:/OneDrive - The Pennsylvania State University/Penn State Summer 2021/CE 331/Lab/Project/CPU_Proj/CPU_Proj.xpr}
+update_compile_order -fileset sources_1
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+source TestBench.tcl
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+close_sim
+launch_simulation
+source TestBench.tcl
+close_sim
+launch_simulation
+source TestBench.tcl
+current_wave_config {Untitled 3}
+add_wave {{/TestBench/dp/if1/pc1}} 
+current_wave_config {Untitled 3}
+add_wave {{/TestBench/dp/if1/IFID}} 
+current_wave_config {Untitled 3}
+add_wave {{/TestBench/dp/ex/jl/er}} 
+current_wave_config {Untitled 3}
+add_wave {{/TestBench/dp/me/Cmr}} 
+current_wave_config {Untitled 3}
+add_wave {{/TestBench/dp/w/wbm/wbData}} 
+relaunch_sim
+close_sim
+launch_simulation
+source TestBench.tcl
+current_wave_config {Untitled 4}
+add_wave {{/TestBench/dp/w/wbm/wbData}} 
+relaunch_sim
+relaunch_sim
+close_sim
+launch_simulation
+source TestBench.tcl
+current_wave_config {Untitled 5}
+add_wave {{/TestBench/dp/w/wbData}} 
+relaunch_sim
+current_wave_config {Untitled 5}
+add_wave {{/TestBench/dp/if1/pc1/pc}} 
+current_wave_config {Untitled 5}
+add_wave {{/TestBench/dp/id/dinstOut}} 
+current_wave_config {Untitled 5}
+add_wave {{/TestBench/dp/ex/er}} 
+current_wave_config {Untitled 5}
+add_wave {{/TestBench/dp/me/mr}} 
+relaunch_sim
+add_bp {D:/OneDrive - The Pennsylvania State University/Penn State Summer 2021/CE 331/Lab/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v} 67
+remove_bps -file {D:/OneDrive - The Pennsylvania State University/Penn State Summer 2021/CE 331/Lab/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v} -line 67
+relaunch_sim
+current_wave_config {Untitled 5}
+add_wave {{/TestBench/dp/if1/pc1/wpcir}} 
+relaunch_sim
+relaunch_sim
+current_wave_config {Untitled 5}
+add_wave {{/TestBench/dp/if1/pcadd}} 
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+current_wave_config {Untitled 5}
+add_wave {{/TestBench/dp/id/rf/qa}} 
+relaunch_sim
+current_wave_config {Untitled 5}
+add_wave {{/TestBench/dp/id/fwdA/q}} 
+relaunch_sim
+relaunch_sim
+relaunch_sim
+remove_forces { {/TestBench/dp/id/fwdA/q} }
+relaunch_sim
+relaunch_sim
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+close_sim
+launch_simulation
+source TestBench.tcl
+current_wave_config {Untitled 6}
+add_wave {{/TestBench/dp/if1/pc1/pc}} 
+current_wave_config {Untitled 6}
+add_wave {{/TestBench/dp/if1/IFID/dinstOut}} 
+current_wave_config {Untitled 6}
+add_wave {{/TestBench/dp/ex/er}} 
+current_wave_config {Untitled 6}
+add_wave {{/TestBench/dp/me/mr}} 
+current_wave_config {Untitled 6}
+add_wave {{/TestBench/dp/w/wbData}} 
+relaunch_sim
+current_wave_config {Untitled 6}
+add_wave {{/TestBench/dp/if1/pcm}} 
+relaunch_sim
+close_sim

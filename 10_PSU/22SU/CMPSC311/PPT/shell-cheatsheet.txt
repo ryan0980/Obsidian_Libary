@@ -1,0 +1,185 @@
+- you should know the following shell concepts
+  - hierarchical file system
+    - directory tree
+    - root directory
+    - home directory
+    - standard directory contents
+      - /etc: configuration files
+      - /dev: device files
+      - /home: user home directories
+      - /lib: shared library files used by core systems programs
+      - /sbin: system binaries for vital system tasks
+      - /usr: programs and support files for users
+      - /var: system log files
+    - absolute path: starts with root directory, that is "/", and specifies a
+      complete path for a file or a directory, e.g. /usr/bin/firefox
+    - relative path: specifies the path for a file relative to the current
+      directory; e.g. if the current directory is /usr, then ./bin/firefox is a
+      relative path for the firefox binary
+  - types of shell commands
+    - binary files: separate programs executed by shell
+    - shell builtins: commands interpreted by shell, the functionality for these
+      commands are implemented in the shell program itself
+    - aliases: shortcuts defined by users to avoid typing of long commands or
+      command sequences
+  - shell variables: variables that a user can set to control shell's behavior
+    - PATH: when a user types a command, shell looks for the binary in the list
+      of directories present in the PATH variable.
+  - input/output redirection
+    - every program executed in shell has three streams associated with it
+      - standard input: where the program reads the input from; attached to
+        keyboard by default
+      - standard output: where the program writes its output; attached to screen
+        by default
+      - standard error: where the program writes its errors; attached to screen
+        by default
+    - shell allows us to redirect these streams from their defaults
+      - use > to redirect standard output to a file:
+        - ls -l /usr/bin >ls-output.txt
+      - use >> to append standard output to a file; using >> will append to a
+        file whereas using > will wipe the output of the file first before
+        writing to it; thus, after the following commands, the file ls-output.txt
+        will have twice the contents of the /usr/bin directory:
+        - ls -l /usr/bin >ls-output.txt
+        - ls -l /usr/bin >>ls-output.txt
+      - use 2> to redirect standard error to a file:
+        - ls -l /nonexistentfile 2>ls-error.txt
+      - use < to read input from a file instead of keyboard:
+        - cat < /etc/passwd
+    - shell allows us to send the output of one program to the input of another
+      program using pipe (|). the following command sequence sends the output of
+      "ls -l /usr/bin" command to the input of "less" command for easier
+      viewing:
+      - ls -l /usr/bin | less
+    - shell allows us to form powerful pipelines to perform arbitrarily complex
+      tasks. see the lecture for an example.
+
+- you should know the following shell commands; use tldr command to find out the
+  most frequently used forms of these commands:
+  - man
+  - pwd
+  - ls
+  - cd
+  - cp
+  - mv
+  - rm
+  - mkdir
+  - rmdir
+  - type
+  - alias
+  - file
+  - echo
+  - less
+  - cat
+
+- the following is an example shell session. you should be able to understand
+  and explain what is going on:
+
+  neo@ubuntu:~$ pwd
+  /home/neo
+  neo@ubuntu:~$ ls
+  demo     Documents  Music   Templates   Videos
+  Desktop  Downloads  Public  typescript
+  neo@ubuntu:~$ cd /
+  neo@ubuntu:/$ ls
+  bin    dev   lib    libx32      mnt   root  snap      sys  var
+  boot   etc   lib32  lost+found  opt   run   srv       tmp
+  cdrom  home  lib64  media       proc  sbin  swapfile  usr
+  neo@ubuntu:/$ cd
+  neo@ubuntu:~$ ls -a
+  .              .config    .gitconfig  Public                     typescript
+  ..             demo       .gnupg      .ssh                       Videos
+  .bash_history  Desktop    .local      .sudo_as_admin_successful
+  .bash_logout   Documents  .mozilla    Templates
+  .bashrc        Downloads  Music       .thunderbird
+  .cache         .emacs.d   .profile    .tldr
+  neo@ubuntu:~$ cd .
+  neo@ubuntu:~$ pwd
+  /home/neo
+  neo@ubuntu:~$ cd ..
+  neo@ubuntu:/home$ pwd
+  /home
+  neo@ubuntu:/home$ cd ..
+  neo@ubuntu:/$ pwd
+  /
+  neo@ubuntu:/$ cd
+  neo@ubuntu:~$ ls
+  demo     Documents  Music   Templates   Videos
+  Desktop  Downloads  Public  typescript
+  neo@ubuntu:~$ file demo
+  demo: directory
+  neo@ubuntu:~$ cd demo
+  neo@ubuntu:~/demo$ ls
+  demo.c
+  neo@ubuntu:~/demo$ file demo.c
+  demo.c: C source, ASCII text
+  neo@ubuntu:~/demo$ cat demo.c
+  #include <stdio.h>
+
+  int main() {
+    printf("welcome to git demo!\n");
+    printf("Nice to meet you!");
+  }
+  neo@ubuntu:~/demo$ cd
+  neo@ubuntu:~$ alias
+  alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+  alias egrep='egrep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias grep='grep --color=auto'
+  alias l='ls -CF'
+  alias la='ls -A'
+  alias ll='ls -alF'
+  alias ls='ls --color=auto'
+  neo@ubuntu:~$ alias deepdir='mkdir a; cd a; mkdir b; cd b; mkdir c; cd c'
+  neo@ubuntu:~$ alias
+  alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+  alias deepdir='mkdir a; cd a; mkdir b; cd b; mkdir c; cd c'
+  alias egrep='egrep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias grep='grep --color=auto'
+  alias l='ls -CF'
+  alias la='ls -A'
+  alias ll='ls -alF'
+  alias ls='ls --color=auto'
+  neo@ubuntu:~$ deepdir
+  neo@ubuntu:~/a/b/c$ cd
+  neo@ubuntu:~$ deepdir
+  mkdir: cannot create directory ‘a’: File exists
+  mkdir: cannot create directory ‘b’: File exists
+  mkdir: cannot create directory ‘c’: File exists
+  neo@ubuntu:~/a/b/c$ cd
+  neo@ubuntu:~$ rmdir a
+  rmdir: failed to remove 'a': Directory not empty
+  neo@ubuntu:~$ rm -rf a
+  neo@ubuntu:~$ type deepdir
+  deepdir is aliased to `mkdir a; cd a; mkdir b; cd b; mkdir c; cd c'
+  neo@ubuntu:~$ unalias deepdir
+  neo@ubuntu:~$ type deepdir
+  bash: type: deepdir: not found
+  neo@ubuntu:~$ ls
+  demo     Documents  Music   Templates   Videos
+  Desktop  Downloads  Public  typescript
+  neo@ubuntu:~$ rmdir Videos
+  neo@ubuntu:~$ mkdir Videos
+  neo@ubuntu:~$ ls
+  demo     Documents  Music   Templates   Videos
+  Desktop  Downloads  Public  typescript
+  neo@ubuntu:~$ cp /etc/passwd x
+  neo@ubuntu:~$ file x
+  x: ASCII text
+  neo@ubuntu:~$ cp /etc/passwd Documents/
+  neo@ubuntu:~$ ls Documents/
+  passwd
+  neo@ubuntu:~$ cp /etc/passwd Documents/mypasswd
+  neo@ubuntu:~$ ls -l Documents/
+  total 8
+  -rw-r--r-- 1 neo neo 2744 Feb  2 07:50 mypasswd
+  -rw-r--r-- 1 neo neo 2744 Feb  2 07:49 passwd
+  neo@ubuntu:~$ mv Documents Templates/
+  neo@ubuntu:~$ ls
+  demo  Desktop  Downloads  Music  Public  Templates  typescript  Videos  x
+  neo@ubuntu:~$ ls Templates/
+  Documents
+  neo@ubuntu:~$ ls Templates/Documents/
+  mypasswd  passwd
+  neo@ubuntu:~$ exit

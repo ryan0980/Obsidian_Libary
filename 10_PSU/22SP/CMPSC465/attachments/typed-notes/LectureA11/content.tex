@@ -1,0 +1,207 @@
+\section*{DFS with Timing and Properties}
+
+Recall that the DFS-with-timing algorithm gives an interval $[pre,post]$ for each vertex.
+For two vertices $v_i,v_j\in V$, their corresponding intervals can either be
+\emph{disjoint}, i.e., the two intervals do not overlap, or \emph{nested}, i.e.,
+one interval is within the other. See Figure~\ref{fig:interval}.
+But two intervals cannot be \emph{partially overlapping}. Why? This is because
+the explore funtion is recursive. There are only two possiblities
+that $pre[i] < pre[j]$. The first one is that explore $v_j$ is \emph{within} explore $v_i$;
+in this case the recursive behaviour of explore leads to that $post[j] < post[i]$,
+as explore $v_j$ must return/terminate first and then explore $v_i$ will return/terminate.
+This case corresponds to that the two intervals are nested.
+The second one is that explore $v_j$ starts after explore $v_i$ finishes;
+this case corresponds to that the two intervals are disjoint.
+
+\begin{figure}[h!]
+\centering{\input{interval}}
+\caption{Relations between two $[pre,post]$ intervals.}
+\label{fig:interval}
+\end{figure}
+
+We now show and prove a key claim that relates the post values and the meta-graph.
+
+\begin{claim}
+Let $C_i$ and $C_j$ be two connected components of directed graph $G = (V, E)$, i.e., $C_i$ and $C_j$ are two
+vertices in its coresponding meta-graph $G_M = (V_M, E_M)$. If we have $(C_i, C_j) \in E_M$ then
+we must have that $\max_{u\in C_i} post[u] > \max_{v\in C_j} post[v]$.
+\end{claim}
+
+Intuitively, following an edge in the meta-graph, the largest post value decreases.
+Before seeing a formal proof, please see an example in Figure~\ref{fig:dfs}:
+the largest post values for $C_1$, $C_2$, $C_3$, and $C_4$ are 9, 6, 10, and 14,
+and you may verify that following any edge in the meta-graph, the largest post value always decreases.
+
+\begin{figure}[h!]
+\centering{\input{dfs}}
+\caption{Example of running DFS~(with timing) on a directed graph. The $[pre,post]$ interval for each vertex
+is marked next to each vertex.  The $postlist$ for this run is \textcolor{blue}{$postlist = (v_4,v_7,v_1,v_2,v_3,v_5,v_6)$}.  }
+\label{fig:dfs}
+\end{figure}
+
+
+
+\emph{Proof.} Let $u^* := \arg\min_{u\in C_i\cup C_j} pre[u]$, i.e., $u^*$ is the first explored vertex in $C_i\cup C_j$.
+Consider the two cases. 
+
+\begin{figure}[h!]
+\centering{\input{meta}}
+\caption{Two cases in proving above claim.}
+\label{fig:meta}
+\end{figure}
+
+First, assume that $u^* \in C_i$. Then $u^*$ can reach all vertices in $C_i\cup C_j\setminus \{u^*\}$.
+Hence, all vertices in $C_i\cup C_j\setminus \{u^*\}$ will be explored \emph{within} exploring $u^*$.
+In other words, for any vertex $v\in C_i\cup C_j\setminus \{u^*\}$, the interval $[pre[v], post[v]]$
+is a subset of $[pre[u^*], post[u^*]]$. This results in two facts:
+$\max_{u\in C_i} post[u] = post[u^*]$ and $\max_{v\in C_j} post[v] < post[u^*]$.
+Combined, we have that $\max_{u\in C_i} post[u] > \max_{v\in C_j} post[v]$.
+
+Second, assume that $u^* \in C_j$. Then $u^*$ can \emph{not} reach any vertex in $C_i$; otherwise
+$C_i\cup C_j$ form a single connected component, conflicting to the fact that any connected component must be maximal.
+Hence, all vertices in $C_i$ will remain unexplored after exploring $u^*$.
+In other words, for any vertex $v\in C_i$, the interval $[pre[v], post[v]]$
+locates after~(and disjoint with) $[pre[u^*], post[u^*]]$. This gives that
+$\max_{u\in C_i} post[u] > post[u^*]$. Besides, 
+we also have $\max_{v\in C_j} post[v] = post[u^*]$ as all vertices in $C_j\setminus \{u^*\}$ will be examined within exploring $u^*$.
+Combined, we have that $\max_{u\in C_i} post[u] > \max_{v\in C_j} post[v]$.
+\qed
+
+The above key claim directly suggest a property about the structure of the meta-graph, given below.
+
+\begin{corollary}
+The list of all connected components in $V_M$ sorted in decreasing order of $\max_{u\in C_i} post[u]$, $1\le i \le k$,
+is a linearization of $G_M$.
+\label{col1}
+\end{corollary}
+
+Verify this is the case in Figure~\ref{fig:dfs}. Answer: such list is $(C_4, C_3, C_1, C_2)$, and it is a linearization of $G_M$.
+
+Above property also suggests us to consider an \emph{ordering of vertices} in descending post values.
+Specifically, we define \emph{postlist} as such ordering of vertices.
+Notice that postlist can be stored in an array and can be efficiently constructed in DFS-with-time.
+Please refer to Lecture A10 for its pseudo-code.
+See Figure~\ref{fig:dfs} for an example.
+
+As a direct consequence of Corollary~\ref{col1} and the definition of postlist, we have the following property.
+This is true as ``the first appearance'' exactly gives the ``largest post value'' since the postlist is sorted 
+in descending order of post values.
+
+\begin{corollary}
+The list of all connected components in $V_M$
+sorted by their first appearance of in the postlist is a linearization of $G_M$.
+\label{col2}
+\end{corollary}
+
+Verify this is the case in Figure~\ref{fig:dfs}. Answer: following $postlist$ the corresponding list of 
+connected components is $(C_4, C_4, C_3, C_1, C_3, C_2, C_3)$.
+The first appearance of each component is $(C_4, C_3, C_1, C_2)$, which is a linearization of $G_M$
+and exactly the one that is sorted by their largest post value.
+
+%%
+%%How about the first vertex of $postlist$? Does it in a sink vertex of $G_M$?
+%%No. And Figure~\ref{fig:dfs} gives such an example: $v_6$ is the first vertex of $postlist$
+%%and it is not in a sink vertex of $G_M$.
+%%Note though, if $G$ is a DAG, then the first vertex of $postlist$ must be a sink of $G$,
+%%as we prove that in DAGs, reverse of $postlist$ is a linearization of $G$ and the last vertex of a linearization must be a sink.
+
+To summarize, now we can build a postlist that satisfies above Corollary~\ref{col2}.
+This almost achieves the desired property of the special ordering:
+``the ordering of connected components sorted by their first appearance in the
+special ordering should form a reverse-linearization of the meta-graph.''
+The only difference is that postlist implies a \emph{linearization} of the meta-graph
+while special ordering requires a \emph{reverse-linearization} of the meta-graph.
+Below, we introduce \emph{reverse graph} to fill this gap.
+
+\section*{Reverse Graph}
+
+\begin{definition}
+Let $G = (V,E)$ be a directed graph. The \emph{reverse graph} of $G$, denoted as $G_R = (V, E_R)$,
+has the same set of vertices and edges with reversed direction, i.e., $(u,v) \in E$ if and only if $(v,u)\in E_R$.
+\end{definition}
+
+\begin{figure}[h!]
+\centering{\input{reverse}}
+\caption{Graph and its reverse graph, and the corresponding meta-graphs.}
+\label{fig:reverse}
+\end{figure}
+
+Following properties can be easily proved using above definition.
+
+\begin{property}
+There is a path from $u$ to $v$ in $G$ if and only if there is a path from $v$ to $u$ in $G_R$.
+In other words, $u$ can reach $v$ in $G$ if and only if $u$ can be reached from $v$ in $G_R$.
+\end{property}
+
+\begin{property}
+$(G_R)_R = G$.
+\end{property}
+
+\begin{property}
+A vertex $v$ of DAG $G$ is a source vertex if and only if $v$ is a sink vertex of $G_R$.
+\end{property}
+
+
+\begin{property}
+$G$ and $G_R$ has the same set of connected components. %In other words the meta-graph of $G$ has the same set of vertices with the meta-graph of $G_R$.
+\end{property}
+
+
+\begin{property}
+The meta-graph of $G_R$ is the reverse graph of the meta-graph of $G$. Formally, $(G_R)^M = (G^M)_R$.
+\end{property}
+
+\begin{property}
+$X$ is a linearization of DAG $G$ if and only if the reverse of $X$ is a linearization of $G_R$~(or, $X$ is a reverse-linearization of $G_R$).
+In particular, since any meta-graph is a DAG, we have that 
+$X$ is linearization of $G^M$ if and only if $X$ is a reverse-linearization of $(G^M)_R = (G_R)^M$,
+and that $X$ is a linearization of $(G_R)^M = (G^M)_R$ if and only if $X$ is a reverse-linearization of $G^M$.
+\end{property}
+
+
+\section*{Algorithm to Determine Connected Components in Directed Graphs}
+
+Combining above DFS-with-timing and reverse graph, here is the pseudo-code we use to obtain a special ordering.
+The key is that we run DFS-with-timing on the reverse graph $G_R$, instead of on the given graph $G$.
+
+\begin{minipage}{0.8\textwidth}
+	\aaA {4}{Algorithm to determine the \textcolor{blue}{specific order}}\xxx
+	\aab {build $G_R$ of $G$;}\xxx
+	\aab {run DFS with timing on $G_R$ to get $postlist$;}\xxx
+	\aab {return $postlist$;}\xxx
+	\aaa {end algorithm;}\xxx
+\end{minipage}
+
+We now show that, above $postlist$, i.e., the $postlist$ obtained by running DFS-with-timing on $G_R$,
+satisfies the condition that ``the ordering of connected components sorted by their first appearance in above
+$postlist$ forms a reverse-linearization of the meta-graph $G_M$''.
+In fact, since above $postlist$ is obtained by running DFS-with-timing on $G_R$,
+according to Corollary~\ref{col2}, 
+the list of all connected components sorted by their first appearance of in above $postlist$ is a linearization of $(G_R)^M$.
+According to Property~6 of reverse graph, we know that a linearization of $(G_R)^M$ is a reverse-linearization of $G_M$.
+
+Above $postlist$ can then be used by the DFS algorithm as a special order to obtain all connected components, with pseudo-code copied below.
+
+\begin{minipage}{0.8\textwidth}
+	\aaA {8}{function DFS ($G = (V, E)$)}\xxx
+	\aab {num-cc = 0;}\xxx
+	\aaB {5}{for \textcolor{blue}{$v_i$ in the $postlist$ obtained above}}\xxx
+	\aaC {3}{if ($visited[i] = 0$)}\xxx
+	\aad {num-cc = num-cc + 1;}\xxx
+	\aad {explore ($G, v_j$);}\xxx
+	\aac {end if;}\xxx
+	\aab {end for;}\xxx
+	\aaa {end algorithm;}\xxx
+\end{minipage}
+
+\begin{minipage}{0.8\textwidth}
+	\aaA {5}{function explore ($G = (V, E), v_i \in V$)}\xxx
+	\aab {$visited[i] = $ num-cc;}\xxx
+	\aaB {2}{for any edge $(v_i, v_j) \in E$}\xxx
+	\aac {if ($visited[j] = 0$): explore ($G, v_j$);}\xxx
+	\aab {end for;}\xxx
+	\aaa {end algorithm;}\xxx
+\end{minipage}
+
+
+The entire algorithm runs in $\Theta(|V| + |E|)$ time.

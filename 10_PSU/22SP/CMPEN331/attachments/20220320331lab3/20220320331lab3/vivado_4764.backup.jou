@@ -1,0 +1,27 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Sun Apr 10 19:27:33 2022
+# Process ID: 4764
+# Current directory: F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent25716 F:\Obsidian_Lib\10_PSU\22SP\CMPEN331\attachments\20220320331lab3\20220320331lab3\20220320331lab3.xpr
+# Log file: F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/vivado.log
+# Journal file: F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.xpr
+update_compile_order -fileset sources_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+create_project 20220410Lab4 F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220410Lab4 -part xc7z010clg400-1
+add_files -norecurse {{F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/Lab 4/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/DataPath.v} {F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/Lab 4/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Mem.v} {F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/Lab 4/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v} {F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/Lab 4/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v} {F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/Lab 4/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v}}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+launch_simulation
+source DataPath.tcl
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1
+current_project 20220320331lab3
+close_project
+close_sim

@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Sat May  7 07:55:04 2022
+# Process ID: 13112
+# Current directory: D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent15464 D:\OneDrive - The Pennsylvania State University\tusrau\10_PSU\22SP\CMPEN331\attachments\zip\Project\CPU_Proj\CPU_Proj.xpr
+# Log file: D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/vivado.log
+# Journal file: D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.xpr}
+update_compile_order -fileset sources_1

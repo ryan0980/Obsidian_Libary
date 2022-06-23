@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Sun Jan 23 19:07:44 2022
+# Process ID: 4464
+# Current directory: D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachment/20220123331lab0/20220123331lab0.runs/synth_1
+# Command line: vivado.exe -log dff3.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source dff3.tcl
+# Log file: D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachment/20220123331lab0/20220123331lab0.runs/synth_1/dff3.vds
+# Journal file: D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachment/20220123331lab0/20220123331lab0.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source dff3.tcl -notrace

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="Testbanch_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="Testbanch" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="2.398 ns"></ZoomStartTime>
+      <ZoomEndTime time="65.299 ns"></ZoomEndTime>
+      <Cursor1Time time="11.300 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="276"></NameColumnWidth>
+      <ValueColumnWidth column_width="120"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="38" />
+   <wvobject fp_name="/Testbanch/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/TBpc" type="array">
+      <obj_property name="ElementShortName">TBpc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">TBpc[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/TBdinstOut" type="array">
+      <obj_property name="ElementShortName">TBdinstOut[31:0]</obj_property>
+      <obj_property name="ObjectShortName">TBdinstOut[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/TBewreg" type="logic">
+      <obj_property name="ElementShortName">TBewreg</obj_property>
+      <obj_property name="ObjectShortName">TBewreg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/TBem2reg" type="logic">
+      <obj_property name="ElementShortName">TBem2reg</obj_property>
+      <obj_property name="ObjectShortName">TBem2reg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/TBewmem" type="logic">
+      <obj_property name="ElementShortName">TBewmem</obj_property>
+      <obj_property name="ObjectShortName">TBewmem</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/TBealuc" type="array">
+      <obj_property name="ElementShortName">TBealuc[3:0]</obj_property>
+      <obj_property name="ObjectShortName">TBealuc[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/TBealuimm" type="logic">
+      <obj_property name="ElementShortName">TBealuimm</obj_property>
+      <obj_property name="ObjectShortName">TBealuimm</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/TBedestReg" type="array">
+      <obj_property name="ElementShortName">TBedestReg[4:0]</obj_property>
+      <obj_property name="ObjectShortName">TBedestReg[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/TBeqa" type="array">
+      <obj_property name="ElementShortName">TBeqa[31:0]</obj_property>
+      <obj_property name="ObjectShortName">TBeqa[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/TBeqb" type="array">
+      <obj_property name="ElementShortName">TBeqb[31:0]</obj_property>
+      <obj_property name="ObjectShortName">TBeqb[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/TBeimm32" type="array">
+      <obj_property name="ElementShortName">TBeimm32[31:0]</obj_property>
+      <obj_property name="ObjectShortName">TBeimm32[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/dinstOut" type="array">
+      <obj_property name="ElementShortName">dinstOut[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dinstOut[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/owreg" type="logic">
+      <obj_property name="ElementShortName">owreg</obj_property>
+      <obj_property name="ObjectShortName">owreg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/om2reg" type="logic">
+      <obj_property name="ElementShortName">om2reg</obj_property>
+      <obj_property name="ObjectShortName">om2reg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/owmem" type="logic">
+      <obj_property name="ElementShortName">owmem</obj_property>
+      <obj_property name="ObjectShortName">owmem</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/oaluc" type="array">
+      <obj_property name="ElementShortName">oaluc[3:0]</obj_property>
+      <obj_property name="ObjectShortName">oaluc[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/oaluimm" type="logic">
+      <obj_property name="ElementShortName">oaluimm</obj_property>
+      <obj_property name="ObjectShortName">oaluimm</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/odestReg" type="array">
+      <obj_property name="ElementShortName">odestReg[4:0]</obj_property>
+      <obj_property name="ObjectShortName">odestReg[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/oqa" type="array">
+      <obj_property name="ElementShortName">oqa[31:0]</obj_property>
+      <obj_property name="ObjectShortName">oqa[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/oqb" type="array">
+      <obj_property name="ElementShortName">oqb[31:0]</obj_property>
+      <obj_property name="ObjectShortName">oqb[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/oimm32" type="array">
+      <obj_property name="ElementShortName">oimm32[31:0]</obj_property>
+      <obj_property name="ObjectShortName">oimm32[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/wwreg" type="logic">
+      <obj_property name="ElementShortName">wwreg</obj_property>
+      <obj_property name="ObjectShortName">wwreg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/wm2reg" type="logic">
+      <obj_property name="ElementShortName">wm2reg</obj_property>
+      <obj_property name="ObjectShortName">wm2reg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/wwmem" type="logic">
+      <obj_property name="ElementShortName">wwmem</obj_property>
+      <obj_property name="ObjectShortName">wwmem</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/waluc" type="array">
+      <obj_property name="ElementShortName">waluc[3:0]</obj_property>
+      <obj_property name="ObjectShortName">waluc[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/waluimm" type="logic">
+      <obj_property name="ElementShortName">waluimm</obj_property>
+      <obj_property name="ObjectShortName">waluimm</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/wdestReg" type="array">
+      <obj_property name="ElementShortName">wdestReg[4:0]</obj_property>
+      <obj_property name="ObjectShortName">wdestReg[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/wqa" type="array">
+      <obj_property name="ElementShortName">wqa[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wqa[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/wqb" type="array">
+      <obj_property name="ElementShortName">wqb[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wqb[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/wimm32" type="array">
+      <obj_property name="ElementShortName">wimm32[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wimm32[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iD/wregrt" type="logic">
+      <obj_property name="ElementShortName">wregrt</obj_property>
+      <obj_property name="ObjectShortName">wregrt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iF/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iF/odinstOut" type="array">
+      <obj_property name="ElementShortName">odinstOut[31:0]</obj_property>
+      <obj_property name="ObjectShortName">odinstOut[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iF/opc" type="array">
+      <obj_property name="ElementShortName">opc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">opc[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iF/wnPC" type="array">
+      <obj_property name="ElementShortName">wnPC[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wnPC[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Testbanch/df/iF/winstOut" type="array">
+      <obj_property name="ElementShortName">winstOut[31:0]</obj_property>
+      <obj_property name="ObjectShortName">winstOut[31:0]</obj_property>
+   </wvobject>
+</wave_config>

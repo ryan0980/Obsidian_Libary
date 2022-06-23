@@ -1,0 +1,31 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname 20220329461project2test) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+(define (minInt x)
+  (if (null? x) "null" (minInt_helper (list-ref x 0) x))
+  )
+
+(define (minInt_helper k x)
+  (if (null? x) k 
+      (if (> k (list-ref x 0)) 
+          (begin
+            ;(print "11")
+            ;(print x)
+            (set! k (list-ref x 0))
+            (minInt_helper k (cdr x))
+            )
+          (begin
+            ;(print " 22")
+            ;(print x)
+        
+            (minInt_helper k (cdr x))
+            )
+          )
+      )
+  );k is int, x is list
+
+(minInt (list 2 6 8))
+(minInt '())
+(minInt_helper 8 (list 7 6 9))
+
+

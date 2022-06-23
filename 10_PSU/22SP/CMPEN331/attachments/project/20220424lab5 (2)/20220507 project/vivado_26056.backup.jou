@@ -1,0 +1,27 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Sun Apr 24 23:36:24 2022
+# Process ID: 26056
+# Current directory: C:/Users/Wentao Wang/Desktop/20220424lab5
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12808 C:\Users\Wentao Wang\Desktop\20220424lab5\20220424lab5.xpr
+# Log file: C:/Users/Wentao Wang/Desktop/20220424lab5/vivado.log
+# Journal file: C:/Users/Wentao Wang/Desktop/20220424lab5\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.xpr}
+update_compile_order -fileset sources_1
+launch_simulation
+source TestBench.tcl
+current_wave_config {Untitled 1}
+add_wave {{/TestBench/dp}} 
+relaunch_sim
+reset_run synth_1
+launch_runs synth_1 -jobs 6
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+save_wave_config {C:/Users/Wentao Wang/Desktop/20220424lab5/TestBench_behav.wcfg}
+add_files -fileset sim_1 -norecurse {{C:/Users/Wentao Wang/Desktop/20220424lab5/TestBench_behav.wcfg}}
+set_property xsim.view {{C:/Users/Wentao Wang/Desktop/20220424lab5/TestBench_behav.wcfg}} [get_filesets sim_1]
+close_sim

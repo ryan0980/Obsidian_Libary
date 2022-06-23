@@ -1,0 +1,89 @@
+\section*{Running Time of Graham-Scan}
+
+Although Graham-Scan-Core consists of two nested loop, in fact it runs in linear time!
+To see this, consider the types of operations and how many each type of operation
+the algorithm needs to do.  There are three types of operations this algorithm does: \emph{push}, \emph{pop}, and \emph{checking-orientation},
+and each operation takes $\Theta(1)$ time. Now let's consider the times of each type will need to execute.
+First, notice that \#(\emph{push}) $= n$, as each point will be pushed to the stack exactly once.
+Second, \#(\emph{pop}) $\le n$, as \#(\emph{push}) $\le$ \#(\emph{pop}) starting from an empty stack~(a point must be pushed into the stack prior to pop).
+Third, notice that right after \emph{checking-orientation} it is either a \emph{push} or a \emph{pop} operation~(i.e.,
+it's not possible to have two \emph{checking-orientation} operations next to each other).
+This implies that \#(\emph{checking-orientation}) $\le$ \#(\emph{push}) + \#(\emph{pop}) $\le 2n$.
+Combined, we have that Graham-Scan-Core takes $\Theta(n)$ time.
+
+The preprocessing step of Graham-Scan takes $\Theta(n \log n)$, as it's dominated by the sorting step.
+The entire running time of Graham-Scan therefore takes $\Theta(n \log n)$ time.
+
+\section*{Divide-and-Conquer Algorithm for Convex Hull}
+
+We now design a divide-and-conquer algorithm for convex hull problem.
+As usual, we define recursive function, say, CHDC~($P$), which takes
+a set of points $P$ as input and returns $CH(P)$, represented
+as the list of vertices of the convex polygon in counter-clockwise order.
+
+\begin{minipage}{0.8\textwidth}
+	\aaA {5}{function CHDC~($P = \{p_1, p_2, \cdots, p_n\}$)}\xxx
+	\aab {if $n \le 3$: resolve this base case and return the convex hull;}\xxx
+	\aab {$C_1$ = CHDC~($P[1..n/2]$);}\xxx
+	\aab {$C_2$ = CHDC~($P[n/2 + 1..n]$);}\xxx
+	\aab {return \textcolor{blue}{combine~($C_1, C_2$)};}\xxx
+	\aaa {end algorithm;}\xxx
+\end{minipage}
+
+The ``combine'' function in above pseudo-code is missing.
+Before design an algorithm for ``combine'', we first make sure that
+it suffices to only consider points in $C_1$ and $C_2$. Formally,
+we can write $CH(P) = CH(C_1\cup C_2)$. This can be proved using the
+Property~2 of convex hull. Intuitively, any point \emph{inside} $C_1$ or $C_2$
+with be inside $CH(P)$, and therefore won't be \emph{on} $CH(P)$.
+
+We can use, for example, Graham-Scan to calculate $CH(C_1\cup C_2)$, which takes $\Theta(m\log m)$, where $m = |C_1\cup C_2|$.
+Can we do better? Yes. We will design an $\Theta(m)$ time algorithm to calculate $CH(C_1\cup C_2)$.
+The idea is to take advantage of that, $C_1$ and $C_2$ are already sorted~(in counter-clockwise order along the polygon),
+and then to use Graham-Scan-Core to calculate $CH(C_1\cup C_2)$. Recall that, Graham-Scan-Core is linear-time algorithm for convex hull;
+it just requires that all points in its input is sorted in counter-clockwise order w.r.t.\ the first point in its input.
+
+
+The pseudo-code for combine procedure is given below.
+
+\begin{minipage}{0.8\textwidth}
+	\aaA {14.5}{function combine~($C_1, C_2$)}\xxx
+	\aab {find $p_*$ in $C_1\cup C_2$ with smallest $y$-coordinate;}\xxx
+	\aab {assume that $p_*\in C_1$; otherwise exchange $C_1$ and $C_2$;}\xxx
+	\aab {rewrite $C_1$ into $C_1'$ with circular shifting so that $p_*$ is the first point of $C_1'$; 
+		(\emph{Note: now points in $C_1'$ is sorted w.r.t.\ $p_*$ in counter-clockwise order.})}\xxx
+	\aab {find $p_S$ in $C_2$ with smallest angle~(i.e., angle $\angle p_S p_* p_\infty$, where $p_\infty = (+\infty, p_*.y)$;}\xxx
+	\aab {find $p_L$ in $C_2$ with largest angle~(i.e., angle $\angle p_L p_* p_\infty$, where $p_\infty = (+\infty, p_*.y)$;}\xxx
+	\aab {let $C_{2a}$ be the sublist of $C_2$ from $p_S$ to $p_L$ in counter-clockwise order; 
+		(\emph{Note: now points in $C_{2a}$ is sorted w.r.t.\ $p_*$ in counter-clockwise order.})}\xxx
+	\aab {let $C_{2b}$ be the sublist of $C_2$ from $p_S$ to $p_L$ in clockwise order;
+		(\emph{Note: now points in $C_{2b}$ is sorted w.r.t.\ $p_*$ in counter-clockwise order.})}\xxx
+	\aab {$C_2' = $ merge-two-sorted-arrays~($C_{2a}, C_{2b}$);
+		(\emph{Note: merging is by the angle w.r.t.\ $p_*$ and $p_\infty$; after it points in $C_2'$ is sorted w.r.t.\ $p_*$ in counter-clockwise order.})}\xxx
+	\aab {$C' = $ merge-two-sorted-arrays~($C_1', C_2'$);
+		(\emph{Note: merging is by the angle w.r.t.\ $p_*$ and $p_\infty$; after it points in $C'$, i.e., points in $C_1\cup C_2$, is sorted w.r.t.\ $p_*$ in counter-clockwise order.})}\xxx
+	\aab {return Graham-Core-Scan~($C'$);}\xxx
+	\aaa {end algorithm;}\xxx
+\end{minipage}
+
+
+See figure below for explaining above combine step.
+
+\begin{figure}[h!]
+\centering{\input{combine}}
+\caption{Example of combining $C_1$ and $C_2$.}
+\label{fig:meta-graph}
+\end{figure}
+
+
+
+Clearly each step of above combine takes linear time. Therefore, the entire running time of combine is $\Theta(|C_1| + |C_2|)$.
+
+To obtain the running time of CHDC, we write its recursion $T(n) = 2T(n/2) + \Theta(|C_1| + |C_2|)$.
+In worst case, $|C_1| + |C_2| = \Theta(n)$, and therefore $T(n) = 2T(n/2) + \Theta(n)$, which gives $T(n) = \Theta(n\log n)$.
+In this (worst) case the running time of this divide-and-conquer algorithm is the same with Graham-Scan.
+However, if the size of $|C_1| + |C_2|$ is in the order of $o(n)$, we will have
+improved running time.  For example, if $|C_1| + |C_2| = \Theta(n^{0.99})$, then $T(n) = \Theta(n)$.  
+This might happen in practical cases, although in worst case divide-and-conquer runs in $\Theta(n\log n)$ time.
+
+

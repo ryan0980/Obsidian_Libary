@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Sun Apr 10 19:51:12 2022
+# Process ID: 13360
+# Current directory: F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220410Lab4/20220410Lab4.runs/synth_1
+# Command line: vivado.exe -log DataPath.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source DataPath.tcl
+# Log file: F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220410Lab4/20220410Lab4.runs/synth_1/DataPath.vds
+# Journal file: F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220410Lab4/20220410Lab4.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source DataPath.tcl -notrace

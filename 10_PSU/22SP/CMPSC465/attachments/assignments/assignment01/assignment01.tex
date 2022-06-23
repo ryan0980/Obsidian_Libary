@@ -1,0 +1,146 @@
+\documentclass[11pt]{article}
+
+\usepackage{CMPSC465}
+\usepackage{enumitem}
+\def\title{Assignment 01}
+
+\def\defeq{\mathrel{\mathop:}=}
+%\usepackage{algpseudocode}
+%\usepackage{algorithm}
+\usepackage[ruled]{algorithm2e}
+%\usepackage{amsthm}
+
+\begin{document}
+\maketitle
+
+\section*{Due: Friday 09:00 am, Jan.\ 21, 2022}
+
+\paragraph*{Instructions:}
+
+You may work in groups of up to three people to solve the homework.
+You must write your own solutions and explicitly acknowledge everyone whom 
+you have worked with or who has given you any significant ideas about your solutions. 
+You may also use books or online resources to help solve homework problems.  
+All consulted references must be acknowledged. The acknowledgements need to be made by answering Problem~1 below.
+
+You are encouraged to solve the problem sets on your own using only the textbook and lecture notes as a reference. This will give you the best chance of doing well on the exams. Relying too much on the help of group members or on online resources will hinder your performance on the exams.
+
+Submissions being late in 2 hours will be accepted with a 20\% penalty. Submissions late more than 2 hours will receive 0. There will be no exceptions to this policy, as we post the solutions soon after the deadline. 
+
+For the full policy on assignments, please consult the syllabus.
+
+\paragraph*{Formatting:} Start a new page for each problem.
+
+\begin{qunlist}
+
+\q{0}{Acknowledgements. }
+	The assignment will receive a 0 if this question is not answered.
+\begin{enumerate}
+	\item If you worked in a group, list the members of the group. Otherwise, write ``I did not work in a group.''
+	\item If you received significant ideas about your solutions from anyone not in your group, list their names here. Otherwise, write ``I did not consult  anyone except my group members''.
+	\item List any resources besides the course material that you consulted in order to solve the material. If you did not consult anything, write ``I did not consult any non-class materials.''
+\end{enumerate}
+
+% Ashirbad and Mingfu
+\q{15}{}
+For each pairs of functions, indicate one of the three: $f = O(g)$, $f = \Omega(g)$, or $f = \Theta(g)$.
+\begin{enumerate}
+\item $f(n) = n^4$, $g(n) = (100n)^{3}$
+\item $f(n) = n^{1.01}$, $g(n) = n^{0.99}\cdot (\log n)^2$
+\item $f(n) = 4n\cdot 2^n + n^{100}$, $g(n) = 3^n$
+\item $f(n) = n^2\cdot \log (n^2)$, $g(n) = n \cdot (\log n)^3$
+\item $f(n) = 3^{n-1}$, $g(n) = 3^n$
+\item $f(n) = 1.01^n$, $g(n) = n^2$
+\item $f(n) = 2^{\log\log n}$, $g(n) = n$
+\item $f(n) = (\log n)^{100}$, $g(n) = n^{0.001}$
+\item $f(n) = 5n + \sqrt n$, $g(n) = 3n + \log n$
+\item $f(n) = 2^n + \log n$, $g(n) = 2^n + (\log n)^{10}$
+\item $f(n) = \sqrt[5]{n}$, $g(n) = \sqrt[3]{n}$
+\item $f(n) = n!$, $g(n) = 3^n$
+\item $f(n) = \log(15n!)$, $g(n) = n\log (n^9)$
+\item $f(n) = \sum_{k=1}^n k$, $g(n) = \log (n!)$
+\item $f(n) = \sum_{k=1}^n k^3$, $g(n) = n^3\cdot \log n$
+\end{enumerate}
+
+
+% Bucky
+\q{16}{}
+Assume you have positive functions $f(n)$, $g(n)$ and $h(n)$ over positive integers $n \ge 1$. For each of
+the following statements, decide if you think it is true or false and
+give a proof or counterexample.
+\begin{enumerate}
+\item If $f(n) = O(g(n))$ and $g(n) = O(h(n))$, then $ f(n) = O(h(n))$.
+\item If $f(n) = \Theta(g(n))$, then $2^{f(n)} = \Theta(2^{g(n)})$.
+%\item If $f(n) = o(g(n))$, then $f(n) = O(g(n))$.
+\item If $f(n) = o(g(n))$, then $\log f(n) = o(\log g(n))$
+\item If $f(n) = O(g(n))$, then $\frac{1}{f(n)} = \Omega(\frac{1}{g(n)})$
+\end{enumerate}
+
+
+
+% Bucky
+\q{16}{}
+For each pseudo-code below, give the asymptotic running time in $\Theta$
+notation. You may assume that standard arithmetic operations take $\Theta(1)$ time.
+\begin{enumerate}
+	\item
+	\begin{minipage}{0.8\textwidth}
+	\begin{algorithm}[H]
+		\For{$i \defeq 1$ \KwTo $n$}{
+			$j \defeq i$\;
+			\While{$j \leq n$}{
+				$j \defeq j + i$\;
+			}
+		}
+	\end{algorithm}
+	\end{minipage}
+
+	\item
+	\begin{minipage}{0.8\textwidth}
+	\begin{algorithm}[H]
+		$i \defeq 1$ \; 
+	    \While{$i \leq n$} {
+			$j \defeq 1$\;
+			\While{$j \leq i$} {
+			    $j \defeq j + 1$\;
+			}
+			$i \defeq 2i$\;
+		}
+	\end{algorithm}
+	\end{minipage}
+
+	\item
+	\begin{minipage}{0.8\textwidth}
+	\begin{algorithm}[H]
+	    $s \defeq 0$\;
+		\For{$i \defeq 1$ \KwTo $n$}{
+		    \For{$j \defeq i + 1$ \KwTo $n$}{
+    			\For{$k \defeq j + 1$ \KwTo $n$}{
+    				$s \defeq s+1$\;
+    			}
+			}
+		}
+	\end{algorithm}
+	\end{minipage}
+
+	\item
+	\begin{minipage}{0.8\textwidth}
+	\begin{algorithm}[H]
+		\For{$i \defeq 1$ \KwTo $n^2$}{
+		    \If {i mod n = 0}{
+    			$j \defeq 1$\;
+    			\While{$j \leq \frac{i}{n}$} {
+    				$j \defeq j + 1$\;
+    			}
+			}
+		}
+	\end{algorithm}
+	\end{minipage}
+
+\end{enumerate}
+
+
+
+
+\end{qunlist}
+\end{document}

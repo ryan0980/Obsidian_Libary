@@ -1,0 +1,107 @@
+\documentclass[11pt]{article}
+
+\usepackage{CMPSC465}
+\usepackage{enumitem}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usepackage{CMPSC465}
+\usepackage{enumitem}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{tikz} 
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{tkz-graph}
+\PassOptionsToPackage{usenames,dvipsnames,svgnames}{xcolor}  
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,automata}
+
+\def\title{Assignment 09}
+
+\def\defeq{\mathrel{\mathop:}=}
+%\usepackage{algpseudocode}
+%\usepackage{algorithm}
+\usepackage[ruled,noline]{algorithm2e}
+%\usepackage{amsthm}
+\newcommand\nonl{%
+  \renewcommand{\nl}{\let\nl\oldnl}}% Remove line number for one line
+  
+\newcommand{\aaa}[1]{\hspace{0.65cm}\parbox[t]{15.3cm}{#1}}
+\newcommand{\aab}[1]{\hspace{1.15cm}\parbox[t]{15.0cm}{#1}}
+\newcommand{\aac}[1]{\hspace{1.65cm}\parbox[t]{15.0cm}{#1}}
+\newcommand{\aad}[1]{\hspace{2.15cm}\parbox[t]{15.0cm}{#1}}
+\newcommand{\aaA}[2]{\hspace{0.5cm} {\tikz[overlay] \draw (0.1, -0.1) -- (0.1, #1 * -1.5em + 0.6em);} \parbox[t]{15.0cm}{#2}}
+\newcommand{\aaB}[2]{\hspace{1.0cm} {\tikz[overlay] \draw (0.1, -0.1) -- (0.1, #1 * -1.5em + 0.6em);} \parbox[t]{15.0cm}{#2}}
+\newcommand{\aaC}[2]{\hspace{1.5cm} {\tikz[overlay] \draw (0.1, -0.1) -- (0.1, #1 * -1.5em + 0.6em);} \parbox[t]{15.0cm}{#2}}
+\newcommand{\aaD}[2]{\hspace{2.0cm} {\tikz[overlay] \draw (0.1, -0.1) -- (0.1, #1 * -1.5em + 0.6em);} \parbox[t]{15.0cm}{#2}}
+\newcommand{\xxx}{\par\vspace{0.1cm}}
+
+\begin{document}
+\maketitle
+
+\section*{Due: Friday 11:59 pm, Apr.\ 01, 2022}
+
+\paragraph*{Instructions:}
+
+You may work in groups of up to three people to solve the homework.
+You must write your own solutions and explicitly acknowledge everyone whom 
+you have worked with or who has given you any significant ideas about your solutions. 
+You may also use books or online resources to help solve homework problems.  
+All consulted references must be acknowledged. The acknowledgements need to be made by answering Problem~1 below.
+
+You are encouraged to solve the problem sets on your own using only the textbook and lecture notes as a reference. This will give you the best chance of doing well on the exams. Relying too much on the help of group members or on online resources will hinder your performance on the exams.
+
+Submissions being late in 2 hours will be accepted with a 20\% penalty. Submissions late more than 2 hours will receive 0. There will be no exceptions to this policy, as we post the solutions soon after the deadline. 
+
+For the full policy on assignments, please consult the syllabus.
+
+\paragraph*{Formatting:} Start a new page for each problem.
+
+\paragraph*{Describing an Algorithm:} Please make sure you use plain wording to explain your algorithm. It is always a good practice to start with a summary of the high-level idea of your algorithm to ease graders understand your solution quickly. Then, explain your algorithm, using plain wording and including enough details.
+
+The use of pseudo-code is optional, and it is your decision. No matter you use it or not, above description in words is always required. The pseudo-code has its own advantage in explaining structured (i.e., if-else, for-loop, recursive functions, etc) algorithms and in putting details in the right place. If you think pseudo-code better explains your algorithm, and/or helps graders understand your solution, and/or contains more details not included in the plain-wording description, then use pseudo-code. If you think everything is already clearly explained in the description with words, then you don't need to include pseudo-code. An algorithm that is only written in pseudo-code (i.e., missing above plain-wording description) is not acceptable, as it is extremely hard to read just pseudo-code without any explanation.
+
+Here is a general situation that may help you decide whether to use pseudo-code or not. An algorithm could be ``designed from scratch'', i.e., you will need to come up with the step-by-step procedure. This usually involves in implementing a function with clear input and output. In this case, including pseudo-code usually helps. All algorithm we've seen so far (e.g., merge-two-sorted-arrays, merge-sort, etc) falls in this category. Second, an algorithm could also be ''transformed into another algorithm'', i.e., you use an existing algorithm to solve this problem. In this case you usually don't need to include pseudo-code but to describe how to transform one problem into the other. We will see such examples soon.
+
+\clearpage\newpage
+
+\begin{qunlist}
+\setcounter{sparectr}{-1}
+
+\q{0}{Acknowledgements. }
+	The assignment will receive a 0 if this question is not answered.
+\begin{enumerate}
+	\item If you worked in a group, list the members of the group. Otherwise, write ``I did not work in a group.''
+	\item If you received significant ideas about your solutions from anyone not in your group, list their names here. Otherwise, write ``I did not consult  anyone except my group members''.
+	\item List any resources besides the course material that you consulted in order to solve the material. If you did not consult anything, write ``I did not consult any non-class materials.''
+\end{enumerate}
+
+\q{12}{}
+We use Huffman encoding to obtain an encoding of alphabet $\{a, b, c\}$ with frequencies $f_a, f_b, f_c$. In each of the following cases, either give an example of a specific set of frequencies $f_a, f_b, f_c$ that would yield the specified encoding or explain why the code cannot possibly be obtained.
+\begin{enumerate}[label=(\alph*)]
+    \item $\{1, 01, 00\}$
+    \item $\{1, 01, 11\}$
+    \item $\{00, 01, 10\}$
+\end{enumerate}
+
+\q{12}{}
+Prove the following two properties of the Huffman encoding.
+\begin{enumerate}[label=(\alph*)]
+    \item If all characters occur with frequency less than $1/3$, then there is guaranteed to be no codeword of length $1$.
+    \item If some character occurs with frequency more than $2/5$, then there is guaranteed to be a codeword of length $1$.
+\end{enumerate}
+
+
+\q{20}{} Answer the following questions about matroids:
+\begin{enumerate}[label=(\alph*)]
+  \item Show that $\left(S, \mathcal{I}_{k}\right)$ is a matroid, where $S$ is any      finite set and $\mathcal{I}_{k}$ is the set of all
+        subsets of $S$ of size at most $k,$ where $k \leq|S| .$
+    \item Show how to transform the weight function of a weighted matroid     problem, where the desired optimal solution is a minimum-weight         maximal independent subset, to make it a standard weighted-matroid    problem. Argue carefully that your transformation is correct.
+\end{enumerate}
+
+
+
+
+\end{qunlist}
+\end{document}

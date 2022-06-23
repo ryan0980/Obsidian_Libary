@@ -1,0 +1,15 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Sun Apr 24 23:40:55 2022
+# Process ID: 11644
+# Current directory: C:/Users/ryan0/Desktop/Temp/20220424lab5
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent11344 C:\Users\ryan0\Desktop\Temp\20220424lab5\20220424lab5.xpr
+# Log file: C:/Users/ryan0/Desktop/Temp/20220424lab5/vivado.log
+# Journal file: C:/Users/ryan0/Desktop/Temp/20220424lab5\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/ryan0/Desktop/Temp/20220424lab5/20220424lab5.xpr
+open_run synth_1 -name synth_1
+update_compile_order -fileset sources_1

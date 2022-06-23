@@ -1,0 +1,346 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Sat May  7 15:09:49 2022
+# Process ID: 24360
+# Current directory: C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.runs/synth_1
+# Command line: vivado.exe -log DataPath.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source DataPath.tcl
+# Log file: C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.runs/synth_1/DataPath.vds
+# Journal file: C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source DataPath.tcl -notrace
+Command: synth_design -top DataPath -part xc7z010clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 24728
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module pcAdd [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstFetch.v:49]
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1329.379 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'DataPath' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/DataPath.v:22]
+INFO: [Synth 8-6157] synthesizing module 'InstFetch' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstFetch.v:138]
+INFO: [Synth 8-6157] synthesizing module 'pc' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstFetch.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'pc' (1#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstFetch.v:3]
+INFO: [Synth 8-6157] synthesizing module 'pcAdd' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstFetch.v:49]
+INFO: [Synth 8-6155] done synthesizing module 'pcAdd' (2#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstFetch.v:49]
+INFO: [Synth 8-6157] synthesizing module 'pcMUX' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstFetch.v:118]
+INFO: [Synth 8-6155] done synthesizing module 'pcMUX' (3#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstFetch.v:118]
+INFO: [Synth 8-6157] synthesizing module 'instMem' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstFetch.v:61]
+INFO: [Synth 8-6155] done synthesizing module 'instMem' (4#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstFetch.v:61]
+INFO: [Synth 8-6157] synthesizing module 'IFIDreg' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstFetch.v:18]
+INFO: [Synth 8-6155] done synthesizing module 'IFIDreg' (5#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstFetch.v:18]
+INFO: [Synth 8-6155] done synthesizing module 'InstFetch' (6#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstFetch.v:138]
+INFO: [Synth 8-6157] synthesizing module 'InstDecode' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:523]
+INFO: [Synth 8-6157] synthesizing module 'Control' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:1]
+WARNING: [Synth 8-151] case item 6'b000011 is unreachable [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:59]
+WARNING: [Synth 8-151] case item 6'b000010 is unreachable [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:62]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:62]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:59]
+INFO: [Synth 8-6155] done synthesizing module 'Control' (7#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:1]
+INFO: [Synth 8-6157] synthesizing module 'forwardMux' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:329]
+INFO: [Synth 8-6155] done synthesizing module 'forwardMux' (8#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:329]
+INFO: [Synth 8-6157] synthesizing module 'jump' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:345]
+INFO: [Synth 8-6155] done synthesizing module 'jump' (9#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:345]
+INFO: [Synth 8-6157] synthesizing module 'Branch' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:361]
+INFO: [Synth 8-6155] done synthesizing module 'Branch' (10#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:361]
+WARNING: [Synth 8-689] width (17) of port connection 'imm' does not match port width (16) of module 'Branch' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:582]
+INFO: [Synth 8-6157] synthesizing module 'equCheck' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:371]
+INFO: [Synth 8-6155] done synthesizing module 'equCheck' (11#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:371]
+INFO: [Synth 8-6157] synthesizing module 'regRTMux' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:381]
+INFO: [Synth 8-6155] done synthesizing module 'regRTMux' (12#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:381]
+INFO: [Synth 8-6157] synthesizing module 'regFile' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:395]
+INFO: [Synth 8-6155] done synthesizing module 'regFile' (13#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:395]
+INFO: [Synth 8-6157] synthesizing module 'ImmExt' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:465]
+INFO: [Synth 8-6155] done synthesizing module 'ImmExt' (14#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:465]
+INFO: [Synth 8-6157] synthesizing module 'IDEXEreg' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:478]
+INFO: [Synth 8-6155] done synthesizing module 'IDEXEreg' (15#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:478]
+INFO: [Synth 8-6155] done synthesizing module 'InstDecode' (16#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:523]
+INFO: [Synth 8-6157] synthesizing module 'Exe' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Exe.v:103]
+INFO: [Synth 8-6157] synthesizing module 'aluMUX' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Exe.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'aluMUX' (17#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Exe.v:1]
+INFO: [Synth 8-6157] synthesizing module 'shiftMux' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Exe.v:82]
+INFO: [Synth 8-6155] done synthesizing module 'shiftMux' (18#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Exe.v:82]
+INFO: [Synth 8-6157] synthesizing module 'Alu' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Exe.v:18]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Exe.v:29]
+INFO: [Synth 8-6155] done synthesizing module 'Alu' (19#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Exe.v:18]
+INFO: [Synth 8-6157] synthesizing module 'jal' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Exe.v:72]
+INFO: [Synth 8-6155] done synthesizing module 'jal' (20#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Exe.v:72]
+INFO: [Synth 8-6157] synthesizing module 'f' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Exe.v:91]
+INFO: [Synth 8-6155] done synthesizing module 'f' (21#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Exe.v:91]
+INFO: [Synth 8-6157] synthesizing module 'exemem' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Exe.v:44]
+INFO: [Synth 8-6155] done synthesizing module 'exemem' (22#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Exe.v:44]
+INFO: [Synth 8-6155] done synthesizing module 'Exe' (23#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Exe.v:103]
+INFO: [Synth 8-6157] synthesizing module 'Mem' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Mem.v:91]
+INFO: [Synth 8-6157] synthesizing module 'Main_Mem' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Mem.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Main_Mem' (24#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Mem.v:23]
+INFO: [Synth 8-6157] synthesizing module 'memwb' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Mem.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'memwb' (25#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Mem.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'Mem' (26#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Mem.v:91]
+INFO: [Synth 8-6157] synthesizing module 'WB' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/WB.v:44]
+INFO: [Synth 8-6157] synthesizing module 'WbMUX' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/WB.v:21]
+INFO: [Synth 8-6155] done synthesizing module 'WbMUX' (27#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/WB.v:21]
+INFO: [Synth 8-6155] done synthesizing module 'WB' (28#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/WB.v:44]
+INFO: [Synth 8-6155] done synthesizing module 'DataPath' (29#1) [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/DataPath.v:22]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:06 . Memory (MB): peak = 1329.379 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1329.379 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z010clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1329.379 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+WARNING: [Synth 8-327] inferring latch for variable 'wreg_reg' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:41]
+WARNING: [Synth 8-327] inferring latch for variable 'm2reg_reg' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:66]
+WARNING: [Synth 8-327] inferring latch for variable 'wmem_reg' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:42]
+WARNING: [Synth 8-327] inferring latch for variable 'aluc_reg' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:68]
+WARNING: [Synth 8-327] inferring latch for variable 'aluImm_reg' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:69]
+WARNING: [Synth 8-327] inferring latch for variable 'regUsage_reg' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:39]
+WARNING: [Synth 8-327] inferring latch for variable 'jal_reg' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:71]
+WARNING: [Synth 8-327] inferring latch for variable 'shift_reg' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:72]
+WARNING: [Synth 8-327] inferring latch for variable 'sext_reg' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:73]
+WARNING: [Synth 8-327] inferring latch for variable 'pcsrc_reg' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/InstDecode.v:74]
+WARNING: [Synth 8-327] inferring latch for variable 'r_reg' [C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.srcs/sources_1/new/Exe.v:30]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1329.379 ; gain = 0.000
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 4     
+	   3 Input   32 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
++---Registers : 
+	               32 Bit    Registers := 11    
+	                5 Bit    Registers := 3     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 11    
++---Muxes : 
+	   4 Input   32 Bit        Muxes := 3     
+	   2 Input   32 Bit        Muxes := 5     
+	   2 Input    5 Bit        Muxes := 2     
+	   8 Input    4 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 4     
+	  13 Input    2 Bit        Muxes := 1     
+	   8 Input    1 Bit        Muxes := 3     
+	  13 Input    1 Bit        Muxes := 12    
+	   3 Input    1 Bit        Muxes := 1     
+	  10 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 80 (col length:40)
+BRAMs: 120 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1329.379 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++------------+------------+---------------+----------------+
+|Module Name | RTL Object | Depth x Width | Implemented As | 
++------------+------------+---------------+----------------+
+|instMem     | p_0_out    | 64x30         | LUT            | 
+|DataPath    | p_0_out    | 64x30         | LUT            | 
++------------+------------+---------------+----------------+
+
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++------------+---------------------+-----------+----------------------+----------------+
+|Module Name | RTL Object          | Inference | Size (Depth x Width) | Primitives     | 
++------------+---------------------+-----------+----------------------+----------------+
+|DataPath    | id/rf/registers_reg | Implied   | 32 x 32              | RAM32M x 12    | 
+|DataPath    | me/m/mem_reg        | Implied   | 64 x 32              | RAM64X1S x 32  | 
++------------+---------------------+-----------+----------------------+----------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1329.379 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Final Mapping Report
++------------+---------------------+-----------+----------------------+----------------+
+|Module Name | RTL Object          | Inference | Size (Depth x Width) | Primitives     | 
++------------+---------------------+-----------+----------------------+----------------+
+|DataPath    | id/rf/registers_reg | Implied   | 32 x 32              | RAM32M x 12    | 
+|DataPath    | me/m/mem_reg        | Implied   | 64 x 32              | RAM64X1S x 32  | 
++------------+---------------------+-----------+----------------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1329.379 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1329.379 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1329.379 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1329.379 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1329.379 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1329.379 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1329.379 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     2|
+|2     |CARRY4   |    43|
+|3     |LUT1     |     3|
+|4     |LUT2     |    27|
+|5     |LUT3     |   196|
+|6     |LUT4     |    42|
+|7     |LUT5     |   132|
+|8     |LUT6     |   373|
+|9     |RAM32M   |    10|
+|10    |RAM32X1D |     4|
+|11    |RAM64X1S |    32|
+|12    |FDRE     |   362|
+|13    |LD       |    46|
+|14    |IBUF     |     1|
+|15    |OBUF     |    38|
++------+---------+------+
+
+Report Instance Areas: 
++------+-----------+-----------+------+
+|      |Instance   |Module     |Cells |
++------+-----------+-----------+------+
+|1     |top        |           |  1311|
+|2     |  ex       |Exe        |   184|
+|3     |    alu    |Alu        |    70|
+|4     |    em     |exemem     |    75|
+|5     |    jl     |jal        |    39|
+|6     |  id       |InstDecode |   753|
+|7     |    b      |Branch     |    16|
+|8     |    c      |Control    |    17|
+|9     |    equ    |equCheck   |     3|
+|10    |    idexe1 |IDEXEreg   |   703|
+|11    |    rf     |regFile    |    14|
+|12    |  if1      |InstFetch  |   197|
+|13    |    IFID   |IFIDreg    |   127|
+|14    |    pa     |pcAdd      |     8|
+|15    |    pc1    |pc         |    62|
+|16    |  me       |Mem        |   103|
+|17    |    m      |Main_Mem   |    32|
+|18    |    mw     |memwb      |    71|
+|19    |  w        |WB         |    32|
+|20    |    wbm    |WbMUX      |    32|
++------+-----------+-----------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1329.379 ; gain = 0.000
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 1 critical warnings and 14 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1329.379 ; gain = 0.000
+Synthesis Optimization Complete : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1329.379 ; gain = 0.000
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.037 . Memory (MB): peak = 1329.379 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 135 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 1 inverter(s) to 46 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1329.379 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 92 instances were transformed.
+  LD => LDCE: 46 instances
+  RAM32M => RAM32M (inverted pins: WCLK) (RAMD32(x6), RAMS32(x2)): 10 instances
+  RAM32X1D => RAM32X1D (inverted pins: WCLK) (RAMD32(x2)): 4 instances
+  RAM64X1S => RAM64X1S (inverted pins: WCLK) (RAMS64E): 32 instances
+
+Synth Design complete, checksum: 44812df6
+INFO: [Common 17-83] Releasing license: Synthesis
+73 Infos, 14 Warnings, 1 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1329.379 ; gain = 0.000
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Wentao Wang/Desktop/20220424lab5/20220424lab5.runs/synth_1/DataPath.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file DataPath_utilization_synth.rpt -pb DataPath_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat May  7 15:10:21 2022...

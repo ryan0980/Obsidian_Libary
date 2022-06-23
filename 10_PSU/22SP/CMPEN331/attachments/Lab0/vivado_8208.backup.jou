@@ -1,0 +1,18 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Sun Jan 23 15:48:54 2022
+# Process ID: 8208
+# Current directory: D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachment/Lab0
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent11052 D:\OneDrive - The Pennsylvania State University\tusrau\10_PSU\22SP\CMPEN331\attachment\Lab0\Lab0.xpr
+# Log file: D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachment/Lab0/vivado.log
+# Journal file: D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachment/Lab0\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project -read_only {D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachment/Lab0/Lab0.xpr}
+update_compile_order -fileset sources_1
+save_project_as 20220123331lab0 {D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachment/20220123331lab0} -force
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+wait_on_run synth_1

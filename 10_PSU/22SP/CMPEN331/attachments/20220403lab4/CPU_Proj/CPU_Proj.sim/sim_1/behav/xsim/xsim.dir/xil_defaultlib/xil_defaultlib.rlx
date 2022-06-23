@@ -1,0 +1,11 @@
+0.7
+2020.2
+Jun 10 2021
+20:04:57
+C:/Users/ryan0/Desktop/Temp/1/CPU_Proj/CPU_Proj.sim/sim_1/behav/xsim/glbl.v,1623370582,verilog,,,,glbl,,,,,,,,
+C:/Users/ryan0/Desktop/Temp/CPU_Proj/CPU_Proj.srcs/sim_1/imports/Lab/TestBench.v,1649647864,verilog,,,,TestBench,,,,,,,,
+C:/Users/ryan0/Desktop/Temp/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/DataPath.v,1649647013,verilog,,C:/Users/ryan0/Desktop/Temp/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v,,DataPath,,,,,,,,
+C:/Users/ryan0/Desktop/Temp/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v,1649647833,verilog,,C:/Users/ryan0/Desktop/Temp/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v,,Alu;Exe;aluMUX;exemem,,,,,,,,
+C:/Users/ryan0/Desktop/Temp/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v,1649645698,verilog,,C:/Users/ryan0/Desktop/Temp/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v,,Control;IDEXEreg;ImmExt;InstDecode;regFile;regRTMux,,,,,,,,
+C:/Users/ryan0/Desktop/Temp/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v,1649645693,verilog,,C:/Users/ryan0/Desktop/Temp/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Mem.v,,IFIDreg;InstFetch;instMem;pc;pcAdder,,,,,,,,
+C:/Users/ryan0/Desktop/Temp/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Mem.v,1649647783,verilog,,C:/Users/ryan0/Desktop/Temp/CPU_Proj/CPU_Proj.srcs/sim_1/imports/Lab/TestBench.v,,Main_Mem;Mem;memwb,,,,,,,,

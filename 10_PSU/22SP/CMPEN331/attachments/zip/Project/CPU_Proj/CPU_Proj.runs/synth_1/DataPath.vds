@@ -1,0 +1,86 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Sat May  7 15:06:44 2022
+# Process ID: 4924
+# Current directory: D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.runs/synth_1
+# Command line: vivado.exe -log DataPath.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source DataPath.tcl
+# Log file: D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.runs/synth_1/DataPath.vds
+# Journal file: D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source DataPath.tcl -notrace
+Command: synth_design -top DataPath -part xc7z010clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 16628
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1240.129 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'DataPath' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/DataPath.v:23]
+INFO: [Synth 8-6157] synthesizing module 'InstFetch' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v:164]
+INFO: [Synth 8-6157] synthesizing module 'pc' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'pc' (1#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v:3]
+INFO: [Synth 8-6157] synthesizing module 'pcAdd' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v:133]
+INFO: [Synth 8-6155] done synthesizing module 'pcAdd' (2#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v:133]
+INFO: [Synth 8-6157] synthesizing module 'pcMUX' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v:110]
+INFO: [Synth 8-6155] done synthesizing module 'pcMUX' (3#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v:110]
+INFO: [Synth 8-6157] synthesizing module 'instMem' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v:18]
+INFO: [Synth 8-6155] done synthesizing module 'instMem' (4#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v:18]
+INFO: [Synth 8-6157] synthesizing module 'IFIDreg' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v:143]
+INFO: [Synth 8-6155] done synthesizing module 'IFIDreg' (5#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v:143]
+INFO: [Synth 8-6155] done synthesizing module 'InstFetch' (6#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v:164]
+INFO: [Synth 8-6157] synthesizing module 'InstDecode' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:519]
+INFO: [Synth 8-6157] synthesizing module 'Control' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:1]
+WARNING: [Synth 8-151] case item 6'b000011 is unreachable [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:60]
+WARNING: [Synth 8-151] case item 6'b000010 is unreachable [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:63]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:63]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:60]
+INFO: [Synth 8-6155] done synthesizing module 'Control' (7#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:1]
+INFO: [Synth 8-6157] synthesizing module 'forwardMux' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:330]
+INFO: [Synth 8-6155] done synthesizing module 'forwardMux' (8#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:330]
+INFO: [Synth 8-6157] synthesizing module 'jump' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:346]
+INFO: [Synth 8-6155] done synthesizing module 'jump' (9#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:346]
+INFO: [Synth 8-6157] synthesizing module 'Branch' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:362]
+INFO: [Synth 8-6155] done synthesizing module 'Branch' (10#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:362]
+WARNING: [Synth 8-689] width (17) of port connection 'imm' does not match port width (16) of module 'Branch' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:578]
+INFO: [Synth 8-6157] synthesizing module 'equCheck' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:373]
+INFO: [Synth 8-6155] done synthesizing module 'equCheck' (11#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:373]
+INFO: [Synth 8-6157] synthesizing module 'regRTMux' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:383]
+INFO: [Synth 8-6155] done synthesizing module 'regRTMux' (12#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:383]
+INFO: [Synth 8-6157] synthesizing module 'regFile' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:397]
+INFO: [Synth 8-6155] done synthesizing module 'regFile' (13#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:397]
+INFO: [Synth 8-6157] synthesizing module 'ImmExt' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:461]
+INFO: [Synth 8-6155] done synthesizing module 'ImmExt' (14#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:461]
+INFO: [Synth 8-6157] synthesizing module 'IDEXEreg' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:474]
+INFO: [Synth 8-6155] done synthesizing module 'IDEXEreg' (15#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:474]
+INFO: [Synth 8-6155] done synthesizing module 'InstDecode' (16#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v:519]
+INFO: [Synth 8-6157] synthesizing module 'Exe' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v:106]
+INFO: [Synth 8-6157] synthesizing module 'aluMUX' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'aluMUX' (17#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v:1]
+INFO: [Synth 8-6157] synthesizing module 'shiftMux' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v:44]
+INFO: [Synth 8-6155] done synthesizing module 'shiftMux' (18#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v:44]
+INFO: [Synth 8-6157] synthesizing module 'Alu' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v:18]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v:29]
+INFO: [Synth 8-6155] done synthesizing module 'Alu' (19#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v:18]
+INFO: [Synth 8-6157] synthesizing module 'jal' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v:55]
+INFO: [Synth 8-6155] done synthesizing module 'jal' (20#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v:55]
+INFO: [Synth 8-6157] synthesizing module 'f' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v:66]
+INFO: [Synth 8-6155] done synthesizing module 'f' (21#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v:66]
+INFO: [Synth 8-6157] synthesizing module 'exemem' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v:77]
+INFO: [Synth 8-6155] done synthesizing module 'exemem' (22#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v:77]
+INFO: [Synth 8-6155] done synthesizing module 'Exe' (23#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v:106]
+INFO: [Synth 8-6157] synthesizing module 'Mem' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Mem.v:96]
+INFO: [Synth 8-6157] synthesizing module 'Main_Mem' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Mem.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Main_Mem' (24#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Mem.v:23]
+INFO: [Synth 8-6157] synthesizing module 'memwb' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Mem.v:69]
+INFO: [Synth 8-6155] done synthesizing module 'memwb' (25#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Mem.v:69]
+INFO: [Synth 8-6155] done synthesizing module 'Mem' (26#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Mem.v:96]
+INFO: [Synth 8-6157] synthesizing module 'WB' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/new/WB.v:34]
+INFO: [Synth 8-6157] synthesizing module 'WbMUX' [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/new/WB.v:21]
+INFO: [Synth 8-6155] done synthesizing module 'WbMUX' (27#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/new/WB.v:21]
+INFO: [Synth 8-6155] done synthesizing module 'WB' (28#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/new/WB.v:34]
+INFO: [Synth 8-6155] done synthesizing module 'DataPath' (29#1) [D:/OneDrive - The Pennsylvania State University/tusrau/10_PSU/22SP/CMPEN331/attachments/zip/Project/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/DataPath.v:23]

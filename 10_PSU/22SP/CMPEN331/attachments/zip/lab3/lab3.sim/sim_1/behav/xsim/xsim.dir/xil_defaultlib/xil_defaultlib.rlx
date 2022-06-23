@@ -1,0 +1,9 @@
+0.7
+2020.2
+Jun 10 2021
+20:04:57
+C:/Users/Wentao Wang/Desktop/ce331/lab3/lab3.sim/sim_1/behav/xsim/glbl.v,1623370582,verilog,,,,glbl,,,,,,,,
+C:/Users/Wentao Wang/Desktop/ce331/lab3/lab3.srcs/sim_1/new/Testbanch.v,1647831781,verilog,,,,Testbanch,,,,,,,,
+C:/Users/Wentao Wang/Desktop/ce331/lab3/lab3.srcs/sources_1/new/Datapath.v,1647832618,verilog,,C:/Users/Wentao Wang/Desktop/ce331/lab3/lab3.srcs/sources_1/new/ID.v,,Datapath,,,,,,,,
+C:/Users/Wentao Wang/Desktop/ce331/lab3/lab3.srcs/sources_1/new/ID.v,1647832518,verilog,,C:/Users/Wentao Wang/Desktop/ce331/lab3/lab3.srcs/sources_1/new/IF.v,,ID;IDPileReg;control;immEx;regFile;regMux,,,,,,,,
+C:/Users/Wentao Wang/Desktop/ce331/lab3/lab3.srcs/sources_1/new/IF.v,1647832420,verilog,,C:/Users/Wentao Wang/Desktop/ce331/lab3/lab3.srcs/sim_1/new/Testbanch.v,,IF;IFID;InsMem;pc;pcAdder,,,,,,,,

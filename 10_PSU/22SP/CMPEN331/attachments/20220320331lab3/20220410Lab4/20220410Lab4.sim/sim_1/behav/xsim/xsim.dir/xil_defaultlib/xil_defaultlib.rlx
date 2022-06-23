@@ -1,0 +1,10 @@
+0.7
+2020.2
+Jun 10 2021
+20:04:57
+F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220410Lab4/20220410Lab4.sim/sim_1/behav/xsim/glbl.v,1623370582,verilog,,,,glbl,,,,,,,,
+F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/Lab 4/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/DataPath.v,1626789422,verilog,,,,DataPath,,,,,,,,
+F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/Lab 4/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v,1626773582,verilog,,F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/Lab 4/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v,,Alu;Exe;aluMUX;exemem,,,,,,,,
+F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/Lab 4/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v,1626355932,verilog,,F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/Lab 4/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v,,Control;IDEXEreg;ImmExt;InstDecode;regFile;regRTMux,,,,,,,,
+F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/Lab 4/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v,1626832418,verilog,,F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/Lab 4/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Mem.v,,IFIDreg;InstFetch;instMem;pc;pcAdder,,,,,,,,
+F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/Lab 4/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Mem.v,1626832162,verilog,,F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/Lab 4/CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/DataPath.v,,Main_Mem;Mem;memwb,,,,,,,,

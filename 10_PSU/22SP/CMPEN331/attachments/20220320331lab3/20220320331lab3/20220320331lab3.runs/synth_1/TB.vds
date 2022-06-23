@@ -1,0 +1,61 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Sun Apr 10 19:28:20 2022
+# Process ID: 9128
+# Current directory: F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.runs/synth_1
+# Command line: vivado.exe -log TB.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source TB.tcl
+# Log file: F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.runs/synth_1/TB.vds
+# Journal file: F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source TB.tcl -notrace
+Command: synth_design -top TB -part xc7z010clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 12724
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1237.887 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'TB' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/TB.v:23]
+INFO: [Synth 8-6157] synthesizing module 'I_OuttaPath' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/DataPath.v:23]
+INFO: [Synth 8-6157] synthesizing module 'InstFetch' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/IF.v:100]
+INFO: [Synth 8-6157] synthesizing module 'pc' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/IF.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'pc' (1#1) [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/IF.v:23]
+INFO: [Synth 8-6157] synthesizing module 'pcAdder' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/IF.v:64]
+INFO: [Synth 8-6155] done synthesizing module 'pcAdder' (2#1) [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/IF.v:64]
+INFO: [Synth 8-6157] synthesizing module 'instMem' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/IF.v:32]
+INFO: [Synth 8-6155] done synthesizing module 'instMem' (3#1) [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/IF.v:32]
+INFO: [Synth 8-6157] synthesizing module 'IFIDreg' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/IF.v:76]
+INFO: [Synth 8-6155] done synthesizing module 'IFIDreg' (4#1) [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/IF.v:76]
+WARNING: [Synth 8-7071] port 'op' of module 'IFIDreg' is unconnected for instance 'IFID' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/IF.v:113]
+WARNING: [Synth 8-7071] port 'func' of module 'IFIDreg' is unconnected for instance 'IFID' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/IF.v:113]
+WARNING: [Synth 8-7071] port 'rd' of module 'IFIDreg' is unconnected for instance 'IFID' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/IF.v:113]
+WARNING: [Synth 8-7071] port 'rt' of module 'IFIDreg' is unconnected for instance 'IFID' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/IF.v:113]
+WARNING: [Synth 8-7071] port 'rs' of module 'IFIDreg' is unconnected for instance 'IFID' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/IF.v:113]
+WARNING: [Synth 8-7071] port 'imm' of module 'IFIDreg' is unconnected for instance 'IFID' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/IF.v:113]
+WARNING: [Synth 8-7023] instance 'IFID' of module 'IFIDreg' has 9 connections declared, but only 3 given [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/IF.v:113]
+INFO: [Synth 8-6155] done synthesizing module 'InstFetch' (5#1) [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/IF.v:100]
+INFO: [Synth 8-6157] synthesizing module 'InstDecode' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/ID.v:131]
+INFO: [Synth 8-6157] synthesizing module 'Control' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/ID.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Control' (6#1) [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/ID.v:23]
+INFO: [Synth 8-6157] synthesizing module 'regRTMux' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/ID.v:46]
+INFO: [Synth 8-6155] done synthesizing module 'regRTMux' (7#1) [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/ID.v:46]
+INFO: [Synth 8-6157] synthesizing module 'regFile' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/ID.v:60]
+INFO: [Synth 8-6155] done synthesizing module 'regFile' (8#1) [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/ID.v:60]
+INFO: [Synth 8-6157] synthesizing module 'ImmExt' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/ID.v:84]
+INFO: [Synth 8-6155] done synthesizing module 'ImmExt' (9#1) [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/ID.v:84]
+INFO: [Synth 8-6157] synthesizing module 'IDEXEreg' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/ID.v:95]
+INFO: [Synth 8-6155] done synthesizing module 'IDEXEreg' (10#1) [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/ID.v:95]
+INFO: [Synth 8-6155] done synthesizing module 'InstDecode' (11#1) [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/ID.v:131]
+INFO: [Synth 8-6155] done synthesizing module 'I_OuttaPath' (12#1) [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/DataPath.v:23]
+WARNING: [Synth 8-689] width (6) of port connection 'ealuc' does not match port width (4) of module 'I_OuttaPath' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/TB.v:37]
+WARNING: [Synth 8-689] width (5) of port connection 'ealuimm' does not match port width (1) of module 'I_OuttaPath' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/TB.v:37]
+WARNING: [Synth 8-689] width (32) of port connection 'edestReg' does not match port width (5) of module 'I_OuttaPath' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/TB.v:37]
+WARNING: [Synth 8-7071] port 'eimm32' of module 'I_OuttaPath' is unconnected for instance 'dp' [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/TB.v:37]
+WARNING: [Synth 8-7023] instance 'dp' of module 'I_OuttaPath' has 10 connections declared, but only 9 given [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/TB.v:37]
+WARNING: [Synth 8-85] always block has no event control specified [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/TB.v:45]
+INFO: [Synth 8-6155] done synthesizing module 'TB' (13#1) [F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/20220320331lab3/20220320331lab3/20220320331lab3.srcs/sources_1/new/TB.v:23]

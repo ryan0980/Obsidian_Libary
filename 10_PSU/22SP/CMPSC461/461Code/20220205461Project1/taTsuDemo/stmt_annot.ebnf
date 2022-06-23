@@ -1,0 +1,27 @@
+# authored by Gang Tan; all rights reserved; do not distribute
+
+# specifies a name of the grammar; the parser generator uses this as
+# the base name of the generated classes
+@@grammar::STMT 
+
+# "$" specifies the end of the input
+# ";" specifies the separator between assignments
+# { ... }+ means 1 or more repetition
+start = ';'.{assignment}+ $ ;
+
+# lhs (left hand side) gives a label to the identifier to make it
+# easier to read
+assignment = lhs:identifier ':=' rhs:exp ;
+
+# important to put float before integer, as PEG grammars use ordered
+# choice and float consumes more chars than integer; if integer were
+# earlier, then "5.23" will be parsed as integer 5 with ".23" as the
+# remaining chars
+exp = identifier | float | integer ;
+
+# regular expressions are put into "/ ... /"
+identifier = /([a-z]|[A-Z])([a-z]|[A-Z]|[0-9])*/ ;
+
+integer = /[0-9]+/ ;
+
+float = /[0-9]+\.[0-9]+/ ;

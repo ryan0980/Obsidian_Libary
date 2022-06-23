@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml>
+	<engine adaptive_rate="1" auto_family="1" cd_drive="D:" channels="2" cuda="0" direct_sdm="0" dsd_6db="0" fft_size="512" gain_comp="0" multicore="auto" pdm_conv="5" pdm_filt="0" quick_pause="0" sdm_conversion="0" sdm_integrator="0" short_buffer="0" type="asio" volume_limit="0" volume_min="-60">
+		<defaults bitrate="11289600" bits="24" dither="5" filter="24" filter1x="6" mode="1" modulator="7" oversampling="18" oversampling1x="18" samplerate="384000"/>
+		<wasapi any_dsd="0" dac_bits="0" dualwire="0" endpoint="{0.0.0.00000000}.{83e58689-085b-4c8d-8a10-433675587fd6}" pack_sdm="0" period_time="5"/>
+		<convolution/>
+		<asio any_dsd="1" channel_offset="0" dac_bits="32" device="YULONG Audio DSD DAC" pack_sdm="0" pdm_div="8" period_time="0"/>
+		<input dualwire="0" endpoint="" format="auto" pack_sdm="1" period_time="0" samplerate="0" type="wasapi"/>
+		<matrix/>
+		<speakers/>
+	</engine>
+	<log enabled="0"/>
+	<interface full_screen="0" verbose_fs="0"/>
+</xml>

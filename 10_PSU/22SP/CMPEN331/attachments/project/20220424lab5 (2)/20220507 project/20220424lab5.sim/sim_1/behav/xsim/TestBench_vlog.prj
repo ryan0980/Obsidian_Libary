@@ -1,0 +1,15 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../20220424lab5.srcs/sources_1/new/DataPath.v" \
+"../../../../20220424lab5.srcs/sources_1/new/Exe.v" \
+"../../../../20220424lab5.srcs/sources_1/new/InstDecode.v" \
+"../../../../20220424lab5.srcs/sources_1/new/InstFetch.v" \
+"../../../../20220424lab5.srcs/sources_1/new/Mem.v" \
+"../../../../20220424lab5.srcs/sources_1/new/WB.v" \
+"../../../../20220424lab5.srcs/sim_1/new/TestBench.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

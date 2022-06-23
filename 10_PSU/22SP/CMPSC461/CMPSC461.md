@@ -1,0 +1,161 @@
+---
+aliases: null
+tags:
+  - 学习/计算机
+alias: null
+author: tusrau
+date created: 20220111 04:48
+date modified: 20220122 04:21
+date updated: 20220508 09:41
+---
+
+[[22SP|22SP]]
+
+# CMPSC 461 - Prog Lang Concepts
+
+[[22SP461solutions]]
+
+## Info
+
+<https://campuswire.com/p/GB6D343A6>
+
+## [[20220110_CMPSC461_syllabus.pdf|Syllabus]]
+
+## Week 1
+
+[[20220112CMPSC461Class1]]
+
+[[20220114CMPSC461Class2]]
+
+## Week 2
+
+[[20220119CMPSC461Class4]]
+
+[[20220121CMPSC461Class5]]
+
+- [x] [[20220121CMPSC461HW1]] 📅 2022-01-21 ✅ 2022-01-21
+**15/21**
+
+## Week 3
+
+[[20220124CMPSC461Class6]]
+
+[[20220126CMPSC461Class7]]
+
+[[20220128CMPSC461Class8]]
+
+## Week 4
+
+[[20220131CMPSC461Class9]]
+
+[[20220202CMPSC461Class10]]
+
+[[20220204CMPSC461Class11]]**Cancel**
+
+- [x] [[20220205CMPSC461Proj1]] ⏫ ⏳ 2022-02-01 📅 2022-02-05 ✅ 2022-02-09
+**4.1/20**没写完
+
+## Week 5
+
+[[20220207CMPSC461Class12]]
+
+[[20220209CMPSC461Class13]]
+
+[[20220211CMPSC461Class14]]
+
+- [x] [[20220213461HW2]] ⏫ 📅 2022-02-13 ✅ 2022-02-13
+**12.75/13**
+
+## Week 6
+
+[[20220214CMPSC461Class15]]
+
+[[20220216CMPSC461Class16]]**Office Hour**
+
+- [x] [[20220216 461 Midtern]] ⏫ 📅 2022-02-16 **Midtern** ✅ 2022-02-16
+
+[[20220218CMPSC461Class17]]
+
+## Week 7
+
+[[20220221CMPSC461Class18]]
+
+[[20220223CMPSC461Class19]]
+
+[[20220225CMPSC461Class20]]
+
+- [x] [[20220225461HW3]] ⏫ 📅 2023-02-25 ✅ 2022-02-25
+
+## Week 8
+
+[[20220228CMPSC461Class21]]
+
+[[20220302CMPSC461Class22]]
+
+[[20220304CMPSC461Class23]]
+
+## Week 9
+
+- [x] [[20220306461HW4]] ⏫ 📅 2022-03-04 ✅ 2022-03-13
+
+**Spring Break**
+
+**Spring Break**
+
+**Spring Break**
+
+## Week 10
+
+[[20220314CMPSC461Class24]]
+
+[[20220316CMPSC461Class25]]
+
+[[20220318CMPSC461Class26]]
+
+## Week 11
+
+[[20220321CMPSC461Class27]]
+
+[[20220323CMPSC461Class28]]
+
+[[20220325CMPSC461Class29]]
+
+## Week 12
+
+[[20220328CMPSC461Class30]]
+
+[[20220330CMPSC461Class31]]
+
+- [x] [[20220330461Project2]] ⏫ 📅 2023-03-30 ✅ 2022-04-04
+
+[[20220401CMPSC461Class32]]
+
+## Week 13
+
+[[20220404CMPSC461Class33]]
+
+[[20220406CMPSC461Class34]]
+
+[[20220408CMPSC461Class35]]
+
+## Week 14
+
+[[20220411CMPSC461Class36]]
+
+[[20220413CMPSC461Class37]]
+
+[[20220415CMPSC461Class38]]
+
+## Week 15
+
+[[20220418CMPSC461Class39]]
+
+[[20220420CMPSC461Class40]]
+
+[[20220422CMPSC461Class41]]
+
+[[20220425CMPSC461Class42]]
+
+[[20220427CMPSC461Class43]]
+
+[[20220430461FinalReview]]

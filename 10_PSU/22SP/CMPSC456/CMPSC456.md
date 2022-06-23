@@ -1,0 +1,159 @@
+---
+aliases: null
+tags:
+  - 学习/计算机
+alias: MATH456
+author: tusrau
+date created: 20220111 04:48
+date modified: 20220122 05:02
+date modified: 20220122 05:02
+---
+
+[[22SP|22SP]]
+
+# CMPSC 456 - Intro Num Anly II
+
+## [[20220110_CMPSC456_Syllabus-2022.pdf|Syllabus]]
+
+## Week 1 (Zoom)
+
+[[20220110CMPSC456Class1]]
+
+[[20220112CMPSC456Class2]]
+
+[[20220114CMPSC456Class3]]
+
+## Week 2
+
+[[20220119CMPSC456Class4]]
+
+- [x] [[20220119CMPSC456HW1]] ⏫ 📅 2022-01-19 ✅ 2022-01-20
+**40/40**
+
+[[20220121CMPSC456Class5]]
+
+## Week 3
+
+[[20220124CMPSC456Class6]]
+
+[[20220126CMPSC456Class7]]
+
+- [x] [[20220126CMPSC456HW2]] ⏫ ⏳ 2022-01-24 📅 2022-01-26 ✅ 2022-01-27
+**/40**
+
+[[20220128CMPSC456Class8]]
+
+## Week 4
+
+[[20220131CMPSC456Class9]]
+
+[[20220202CMPSC456Class10]]
+
+- [x] [[20220202CMPSC456HW3]] ⏫ 📅 2023-02-02 ✅ 2022-02-02
+**/40**
+
+[[20220204CMPSC456Class11]]
+
+## Week 5
+
+[[20220207CMPSC456Class12]]
+
+[[20220209CMPSC456Class13]]
+
+[[20220211CMPSC456Class14]]
+
+## Week 6
+
+- [x] [[20220214456HW4]] ⏫ 📅 2022-02-14 ✅ 2022-02-14
+
+[[20220214CMPSC456Class15]]
+
+[[20220216CMPSC456Class16]]
+
+[[20220218CMPSC456Class17]]
+
+## Week 7
+
+- [x] [[20220221456HW5]] ⏫ 📅 2022-02-21 ✅ 2022-02-22
+
+[[20220221CMPSC456Class18]]
+
+[[20220223CMPSC456Class19]]
+
+[[20220225CMPSC456Class20]]
+
+## Week 8
+
+- [x] [[20220228456HW6]] ⏫ 📅 2022-02-28 ✅ 2022-03-13
+
+[[20220228CMPSC456Class21]]
+
+[[20220302CMPSC456Class22]]
+
+[[20220304CMPSC456Class23]]
+
+## Week 9
+
+**Spring Break**
+
+**Spring Break**
+
+**Spring Break**
+
+## Week 10
+
+[[20220307CMPSC456Class24]]
+
+[[20220309CMPSC456Class25]]
+
+[[20220311CMPSC456Class26]]
+
+## Week 11
+
+[[20220314CMPSC456Class27]]
+
+[[20220316CMPSC456Class28]]
+
+[[20220318CMPSC456Class29]]
+
+## Week 12
+
+[[20220321CMPSC456Class30]]
+
+[[20220323CMPSC456Class31]]
+
+[[20220325CMPSC456Class32]]
+
+## Week 13
+
+[[20220328CMPSC456Class33]]
+
+[[20220330CMPSC456Class34]]
+
+[[20220401CMPSC456Class35]]
+
+## Week 14
+
+[[20220404CMPSC456Class36]]
+
+[[20220406CMPSC456Class37]]
+
+[[20220408CMPSC456Class39]]
+
+## Week 15
+
+[[20220411CMPSC456Class40]]
+
+[[20220413CMPSC456Class41]]
+
+[[20220415CMPSC456Class42]]
+
+## Week 16
+
+[[20220418CMPSC456Class43]]
+
+[[20220420CMPSC456Class44]]
+
+[[20220422CMPSC456Class45]]
+
+[[20220504456FinalReview]]

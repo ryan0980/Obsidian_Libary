@@ -1,0 +1,14 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../../CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Exe.v" \
+"../../../../../CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstDecode.v" \
+"../../../../../CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/InstFetch.v" \
+"../../../../../CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/Mem.v" \
+"../../../../../CPU_Proj/CPU_Proj.srcs/sources_1/new/WB.v" \
+"../../../../../CPU_Proj/CPU_Proj.srcs/sources_1/imports/Lab/DataPath.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

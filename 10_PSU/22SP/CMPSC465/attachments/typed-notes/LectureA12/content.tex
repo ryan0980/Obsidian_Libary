@@ -1,0 +1,239 @@
+\section*{Deciding Directed Acyclic Graphs}
+
+How to decide if a given directed graph is DAG or not?
+The following variant of DFS~(with timing) gives an algorithm.
+Specifically, when the algorithm examines an edge $(v_i, v_j)$:
+if $v_j$ has been explored \emph{and} its post-number hasn't been set yet,
+then the algorithm reports that $G$ is not a DAG.
+
+\begin{minipage}{0.8\textwidth}
+	\aaA {8}{function DFS ($G = (V, E)$)}\xxx
+	\aab {$clock = 1$;}\xxx
+	\aab {$visited[i] = 0, pre[i] = -1, post[i] = -1$, for $1\le i \le |V|$;}\xxx
+	\aaB {4}{for $i = 1 \to |V|$}\xxx
+	\aaC {2}{if ($visited[i] = 0$)}\xxx
+	\aad {explore ($G, v_j$);}\xxx
+	\aac {end if;}\xxx
+	\aab {end for;}\xxx
+	\aaa {end algorithm;}\xxx
+\end{minipage}
+
+\begin{minipage}{0.8\textwidth}
+	\aaA {10}{function explore ($G = (V, E), v_i \in V$)}\xxx
+	\aab {$visited[i] = 1$;}\xxx
+	\aab {$pre[i] = clock$;}\xxx
+	\aab {$clock++$;}\xxx
+	\aaB {3}{for any edge $(v_i, v_j) \in E$}\xxx
+	\aac {if ($visited[j] = 0$): explore ($G, v_j$);}\xxx
+	\aac {\textcolor{red}{else if ($post[j] = -1$): report ``$G$ is not a DAG''};}\xxx
+	\aab {end for;}\xxx
+	\aab {$post[i] = clock$;}\xxx
+	\aab {$clock++$;}\xxx
+	\aaa {end algorithm;}\xxx
+\end{minipage}
+
+Now let's prove this algorithm is correct.
+We first prove that if $G$ is not a DAG then the algorithm will always give that report at some time.
+Assume that $G$ contains a cycle $C$ as it is not a DAG.
+Let $v_j \in C$ be the first vertex that is explored in $C$.
+Let $(v_i, v_j) \in E$ be an edge in $C$.
+As $v_j$ can reach $v_i$, within exploring $v_j$ there will be a time that $v_i$ will be explored.
+Consider the time of examining edge $(v_i,v_j)$ within exploring $v_i$: at this time $visited[j]$ has been set as 1,
+but its post-number hasn't been set, as now the algorithm is still within exploring $v_j$.
+Therefore, the algorithm will report that $G$ dis not a DAG. 
+
+We then prove that if the algorithm gives that report then $G$ indeed is not a DAG.
+Consider that the algorithm is exploring $v_i$, examining edge $(v_i, v_j)$ and 
+finds $visited[j] = 1$ \emph{and} $post[j] = -1$.
+The fact that $post[j]$ hasn't been set implies that the algorithm is within exploring $v_j$.
+So we have that $v_j$ can reach $v_i$, as now we are exploring $v_i$.
+In addition, there exists edge $(v_i, v_j)$. Combined, $G$ contains cycle.
+
+Note that this algorithm is essentially determining if there exists edge $(v_i, v_j) \in E$
+such that the interval $[pre[i], post[i]]$ is within interval $[pre[j], post[j]]$.
+(Such edges are called \emph{back edges} in textbook~[DPV], page 95.)
+
+
+\section*{Finding a Linearization of a DAG}
+
+DFS-with-timing can also be used to find a linearization of a DAG: we simply run DFS-with-timing on the given DAG $G$
+and get the postlist~(the list of vertices in decreasing order of post value); the postlist will be a linearization of $G$.
+
+Why? First, observe that each connected component of a DAG $G$ contains exactly one vertex, i.e., each vertex in a DAG $G$
+forms the connected component of its own. (Can you spot this using Figure~\ref{fig:meta-graph}?)
+This is because, if a connected component contains at least two vertices $u$ and $v$ then $u$ can reach $v$ and $v$ can reach $u$ so a cycle must exist.
+Consequently, the meta-graph $G_M$ of any DAG $G$ is also itself, i.e., $G= G_M$. % for any DAG $G$.
+
+Now let's interpret the conclusions for general directed graphs we obtained in  Lecture A11 in the context of DAGs.
+Consider Claim~1 in Lecture A11: \emph{Let $C_i$ and $C_j$ be two connected components of directed graph $G = (V, E)$, i.e., $C_i$ and $C_j$ are two
+vertices in its coresponding meta-graph $G_M = (V_M, E_M)$. If we have $(C_i, C_j) \in E_M$ then
+we must have that $\max_{u\in C_i} post[u] > \max_{v\in C_j} post[v]$.}
+As in a DAG, components $C_i$ and $C_j$ will degenerate into two vertices, say $v_i$ and $v_j$, and
+its meta-graph $G_M$ is the same as $G$, we can translate this claim for DAG as: 
+if in a DAG we have $(v_i, v_j) \in E$ then we must have $post[i] > post[j]$.
+This immediately gives the desired conclusion following the definition of linearization
+and the definition of postlist: the postlist is a linearization of $G$.
+
+\begin{figure}[h!]
+\centering{\input{dfs-dag}}
+\caption{Example of running DFS~(with timing) on a DAG $G$. The $[pre,post]$ interval for each vertex
+is marked next to each vertex. The $postlist$ for this run is $(v_1, v_5, v_2, v_4, v_6, v_3)$, which is a linearization of $G$.}
+\label{fig:meta-graph}
+\end{figure}
+
+
+\section*{Queue}
+
+A \emph{queue} data structure supports the following four operations.
+\vspace*{-\topsep}
+\begin{enumerate}
+\item empty~($Q$): decides if queue $Q$ is empty;
+\item insert~($Q$, $x$): add element $x$ to $Q$;
+\item find-earliest~($Q$): return the earliest added element in $Q$;
+\item delete-earliest~($Q$): remove the earliest added element in $Q$.
+\end{enumerate}
+
+To implement above operations, we can use a (dynamic) array $S$ to stores all elements,
+and use two pointers, \emph{head} and \emph{tail}, where \emph{head} pointer always points
+to the first available space in $S$, and \emph{tail} pointer always points to the 
+earliest added element in $S$. When we add an element to $S$ we can directly
+add it to the place \emph{head} points to, and when we delete the earliest added
+element, we can directly remove the one \emph{tail} points to.
+
+\begin{figure}[h!]
+\centering{\input{queue}}
+\caption{An example of queue.}
+\end{figure}
+
+\begin{minipage}{0.8\textwidth}
+	\aaA {3}{function empty($Q$)}\xxx
+	\aab {if \emph{head} = \emph{tail}: return true;}\xxx
+	\aab {else: return false;}\xxx
+	\aaa {end function;}\xxx
+\end{minipage}
+
+\begin{minipage}{0.8\textwidth}
+	\aaA {3}{function insert($Q$, $x$)}\xxx
+	\aab {$S[head] = x$;}\xxx
+	\aab {head = head + 1;}\xxx
+	\aaa {end function;}\xxx
+\end{minipage}
+
+\begin{minipage}{0.8\textwidth}
+	\aaA {2}{function find-earliest($Q$)}\xxx
+	\aab {return $S[tail]$;}\xxx
+	\aaa {end function;}\xxx
+\end{minipage}
+
+\begin{minipage}{0.8\textwidth}
+	\aaA {2}{function delete-earliest($Q$)}\xxx
+	\aab {tail = tail + 1;}\xxx
+	\aaa {end function;}\xxx
+\end{minipage}
+
+Note, a queue data structure exhibits a first-in-first-out property~(while a stack is first-in-last-out).
+
+\section*{Priority Queue}
+
+In a priority queue, each element is associated with a \emph{priority}~(also called key).
+In other words, each element in a priority queue is a pair (\emph{key, value}),
+where \emph{key} indicates its priority, while \emph{value} stores the actual data.
+A \emph{priority queue} data structure supports the following operations.
+\vspace*{-\topsep}
+\begin{enumerate}
+\item empty~($PQ$): decides if priority queue $PQ$ is empty;
+\item insert~($PQ$, $x$): add element $x$ to $PQ$;
+\item find-min~($PQ$): return the element in $PQ$ with smallest key~(i.e., highest priority);
+\item delete-min~($PQ$): remove the element in $PQ$ with smallest key~(i.e., highest priority).
+\item decrease-key~($PQ$, pointer-to-an-element, new-key): set the key of the specified element as the given new-key.
+\end{enumerate}
+
+Note that a queue can be regarded as a special case of priority, for which the priority
+is the time an element is added to the queue.
+
+There are numerous different implementations for priority queue~(check wikipedia). 
+Here we introduce one of them, \emph{binary heap}. To do it, let's first
+formally introduce \emph{heap}.
+
+%%A \emph{tree} is a connected undirected graph without cycle. A tree with $n$ vertices has $(n - 1)$ edges.
+%%A tree can be \emph{rooted} by picking a vertex as root.
+%%Such \emph{rooting} procedure adds a direction to each edge~(goes from root to leaves).
+%%
+%%\begin{figure}[h!]
+%%\centering{\input{tree}}
+%%\caption{An example of tree and rooting by picking $v_9$ as root.}
+%%\end{figure}
+
+A \emph{heap} is a (rooted) tree data structure satisfies the \emph{heap property}.
+A heap is either a \emph{min-heap} if it satisfies the \emph{min-heap property}: for any edge $(u, v)$ in the (rooted) tree $T$,
+the key of $u$ is smaller than that of $v$,
+or a \emph{max-heap} if it satisfies the \emph{max-heap property}: for any edge $(u, v)$ in the (rooted) tree $T$,
+the key of $u$ is larger than that of $v$.
+Here we always consider a heap as a min-heap, unless otherwise specified.
+
+\begin{figure}[h!]
+\centering{\input{heap}}
+\caption{An example of heap. The key of an element is next to vertices}
+\end{figure}
+
+A \emph{binary heap} is a heap with the tree being the \emph{complete binary tree}.
+A \emph{complete binary tree} is a binary tree~(i.e., each vertex has at most 2 children)
+and that in every layer of the tree, except possibly the last, is completely filled, and all vertices in the last layer are placed from left to right.
+
+\begin{figure}[h!]
+\centering{\input{binary-heap}}
+\caption{An example of binary heap.}
+\end{figure}
+
+Since a binary heap $T$ is so regular, we can use an array $S$ to store its elements~(rather than using adjacency list).
+The root~(i.e., layer 0) of $T$ is placed in $S[1]$~(we assume that the index of $S$ starts from 1),
+the first element of the layer~1 is placed in $S[2]$, and so on.
+Generally, the $j$-th element in the $i$-th layer of $T$ will be placed in $S[2^i + j - 1]$.
+%Using an array to store a binary heap $T$, 
+We can also easily access the parent and children of an element:
+\vspace*{-\topsep}
+\begin{enumerate}
+\item the parent element of $S[k]$ is $S[k/2]$~(floor of $k/2$);
+\item the left child of $S[k]$ is $S[2k]$; the right child of $S[k]$ is $S[2k + 1]$.
+\end{enumerate}
+
+We now introduce two common procedures used in implementing a binary heap.
+These procedures apply when one vertex violates the heap property,
+and they can adjust the heap to make it satisfy the heap property.
+
+The \emph{bubble-up} function applies when a vertex has a smaller key than its parent.
+
+\begin{minipage}{0.8\textwidth}
+	\aaA {6}{function bubble-up~($S$, $k$)}\xxx
+	\aab {$p = k / 2$;}\xxx
+	\aaB {3}{if ($S[k].key < S[p].key$);}\xxx
+	\aac {swap $S[p]$ and $S[k]$;}\xxx
+	\aac {bubble-up~($S$, $p$);}\xxx
+	\aab {end if;}\xxx
+	\aaa {end function;}\xxx
+\end{minipage}
+
+\begin{figure}[h!]
+\centering{\input{bubble-up}}
+\caption{Illustrating bubble-up procedure.}
+\end{figure}
+
+
+The \emph{sift-down} function applies when a vertex has a larger key than its children.
+
+\begin{minipage}{0.8\textwidth}
+	\aaA {6}{function sift-down~($S$, $k$)}\xxx
+	\aab {$c = \arg\min_{t \in \{2k, 2k+1\}} S[t].key$ be the index of the child of $S[k]$ with smaller key;}\xxx
+	\aaB {3}{if ($S[k].key > S[c].key$);}\xxx
+	\aac {swap $S[c]$ and $S[k]$;}\xxx
+	\aac {sift-down~($S$, $c$);}\xxx
+	\aab {end if;}\xxx
+	\aaa {end function;}\xxx
+\end{minipage}
+
+\begin{figure}[h!]
+\centering{\input{sift-down}}
+\caption{Illustrating sift-down procedure.}
+\end{figure}
+
+

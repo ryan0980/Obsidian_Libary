@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Sun Apr 10 23:37:07 2022
+# Process ID: 6036
+# Current directory: F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/lab3
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent8080 F:\Obsidian_Lib\10_PSU\22SP\CMPEN331\attachments\zip\lab3\lab3.xpr
+# Log file: F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/lab3/vivado.log
+# Journal file: F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/lab3\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project F:/Obsidian_Lib/10_PSU/22SP/CMPEN331/attachments/zip/lab3/lab3.xpr
+update_compile_order -fileset sources_1
