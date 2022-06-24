@@ -20,7 +20,7 @@ public class Main {
         while (node != null) {
             length++;
             System.out.println(length);// added to see the current length
-            if (node.next != nullptr) {
+            if (node.next != null) {
                 node = node.next;
             } else {
                 return length;
