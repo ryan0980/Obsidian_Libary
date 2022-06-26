@@ -11,3 +11,7 @@ date updated: 20220625 11:57
 # 486Lesson 6
 
 ## **Mixed Strategy Nash Equilibria**
+
+![[Pasted image 20220626091813.png]]
+
+
