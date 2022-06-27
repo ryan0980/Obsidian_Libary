@@ -1,14 +1,19 @@
 ---
 aliases: 
-tags: 学习
-alias: 
-author: tusrau
-date created: 20220111 04:48
-date modified: 20220111 04:46
-date updated: 20220623 01:58
+tags: 
+date created: 20220627 01:45
+date updated: 20220627 01:45
 ---
 
-# 10_PSU
+# 10_PSU Overview
+
+ 
+
+```ccard
+type: folder_brief_live
+```
+
+ 
 
 [[19FA]]
 
