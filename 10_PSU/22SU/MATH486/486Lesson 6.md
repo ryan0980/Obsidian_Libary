@@ -19,3 +19,4 @@ date updated: 20220626 09:20
 ## **Background For Nash's Existence Theorem**
 
 ![[Pasted image 20220627224016.png]]
+![[Pasted image 20220628002259.png]]
