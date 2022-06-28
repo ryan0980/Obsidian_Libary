@@ -5,7 +5,7 @@ rating:
 tags: 学习/数学
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220628 08:13
+date updated: 20220628 09:28
 ---
 
 # 486Lesson 6
@@ -70,8 +70,12 @@ graph
 
 ![[Pasted image 20220628082851.png]]
 ![[Pasted image 20220628082904.png]]
+
 if player 1 have high card, he will play bb
+
 ![[Pasted image 20220628084601.png]]
 ![[Pasted image 20220628092220.png]]
 综合
 ![[Pasted image 20220628092800.png]]
+
+![[Pasted image 20220628093344.png]]
