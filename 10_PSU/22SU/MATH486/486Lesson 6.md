@@ -63,3 +63,5 @@ graph
 
 ![[Pasted image 20220628055421.png]]
 ![[Pasted image 20220628074015.png]]
+
+![[Pasted image 20220628074503.png]]
