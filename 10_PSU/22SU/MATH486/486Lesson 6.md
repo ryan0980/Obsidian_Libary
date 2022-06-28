@@ -5,7 +5,7 @@ rating:
 tags: 学习/数学
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220628 09:28
+date updated: 20220628 09:33
 ---
 
 # 486Lesson 6
@@ -79,3 +79,5 @@ if player 1 have high card, he will play bb
 ![[Pasted image 20220628092800.png]]
 
 ![[Pasted image 20220628093344.png]]
+
+## **Water Pollution 3**
