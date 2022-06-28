@@ -72,3 +72,4 @@ graph
 ![[Pasted image 20220628082904.png]]
 if player 1 have high card, he will play bb
 ![[Pasted image 20220628084601.png]]
+![[Pasted image 20220628092220.png]]
