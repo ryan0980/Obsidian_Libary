@@ -62,3 +62,4 @@ graph
 ## **The Ultimatum Minigame**
 
 ![[Pasted image 20220628055421.png]]
+![[Pasted image 20220628074015.png]]
