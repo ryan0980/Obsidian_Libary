@@ -5,7 +5,7 @@ rating:
 tags: 学习/数学
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220628 01:40
+date updated: 20220628 04:27
 ---
 
 # 486Lesson 6
@@ -38,8 +38,11 @@ date updated: 20220628 01:40
 ![[Pasted image 20220628014000.png]]
 
 ## **More Results on Mixed Strategy Nash Equilibria**
+
 ![[Pasted image 20220628042648.png]]
 ![[Pasted image 20220628042658.png]]
 ![[Pasted image 20220628042717.png]]
 
-## **Using the Fundamental Theorem to Find MSNE: Two Examples**
+## **Using The Fundamental Theorem to Find MSNE: Two Examples**
+
+![[Pasted image 20220628043535.png]]
