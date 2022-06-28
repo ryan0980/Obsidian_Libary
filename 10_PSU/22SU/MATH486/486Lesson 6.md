@@ -5,7 +5,7 @@ rating:
 tags: 学习/数学
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220626 09:20
+date updated: 20220628 12:49
 ---
 
 # 486Lesson 6
@@ -20,3 +20,6 @@ date updated: 20220626 09:20
 
 ![[Pasted image 20220627224016.png]]
 ![[Pasted image 20220628002259.png]]
+![[Pasted image 20220628004929.png]]
+
+## **Nash's Existence Theorem**
