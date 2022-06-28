@@ -28,3 +28,5 @@ date updated: 20220628 01:07
 
 ![[Pasted image 20220628010635.png]]![[Pasted image 20220628010502.png]]
 ![[Pasted image 20220628010618.png]]
+
+## **Fundamental Theorem of Nash Equilibria**
