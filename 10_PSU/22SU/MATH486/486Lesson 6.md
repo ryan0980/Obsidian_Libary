@@ -17,3 +17,5 @@ date updated: 20220626 09:20
 ![[Pasted image 20220626092001.png]]
 
 ## **Background For Nash's Existence Theorem**
+
+![[Pasted image 20220627224016.png]]
