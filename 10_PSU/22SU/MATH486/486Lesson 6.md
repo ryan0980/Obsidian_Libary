@@ -5,7 +5,7 @@ rating:
 tags: 学习/数学
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220628 05:54
+date updated: 20220628 07:45
 ---
 
 # 486Lesson 6
@@ -65,3 +65,6 @@ graph
 ![[Pasted image 20220628074015.png]]
 
 ![[Pasted image 20220628074503.png]]
+
+## **One-card Two-round Poker**
+
