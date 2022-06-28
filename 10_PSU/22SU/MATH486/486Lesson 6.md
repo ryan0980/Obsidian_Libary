@@ -5,7 +5,7 @@ rating:
 tags: 学习/数学
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220628 01:07
+date updated: 20220628 01:17
 ---
 
 # 486Lesson 6
@@ -30,3 +30,6 @@ date updated: 20220628 01:07
 ![[Pasted image 20220628010618.png]]
 
 ## **Fundamental Theorem of Nash Equilibria**
+
+![[Pasted image 20220628011747.png]]
+![[Pasted image 20220628011803.png]]
