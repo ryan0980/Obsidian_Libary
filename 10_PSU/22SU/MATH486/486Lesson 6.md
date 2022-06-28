@@ -5,7 +5,7 @@ rating:
 tags: 学习/数学
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220628 05:08
+date updated: 20220628 05:26
 ---
 
 # 486Lesson 6
@@ -52,3 +52,5 @@ date updated: 20220628 05:08
 ![[Pasted image 20220628050816.png]]
 
 ## **Other Ways to Find Mixed Strategy Nash Equilbiria**
+
+![[Pasted image 20220628052806.png]]
