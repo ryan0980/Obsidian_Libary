@@ -5,7 +5,7 @@ rating:
 tags: 学习/数学
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220628 01:17
+date updated: 20220628 01:40
 ---
 
 # 486Lesson 6
@@ -33,3 +33,8 @@ date updated: 20220628 01:17
 
 ![[Pasted image 20220628011747.png]]
 ![[Pasted image 20220628011803.png]]
+
+![[Pasted image 20220628013919.png]]
+![[Pasted image 20220628014000.png]]
+
+## **More Results on Mixed Strategy Nash Equilibria**
