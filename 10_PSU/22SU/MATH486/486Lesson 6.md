@@ -53,4 +53,5 @@ date updated: 20220628 05:26
 
 ## **Other Ways to Find Mixed Strategy Nash Equilbiria**
 
-![[Pasted image 20220628052806.png]]
+![[Pasted image 20220628052806.png]]![[Pasted image 20220628052921.png]]
+
