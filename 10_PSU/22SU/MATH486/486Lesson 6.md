@@ -5,7 +5,7 @@ rating:
 tags: 学习/数学
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220628 12:57
+date updated: 20220628 01:07
 ---
 
 # 486Lesson 6
@@ -26,5 +26,5 @@ date updated: 20220628 12:57
 
 ![[Pasted image 20220628005733.png]]
 
-
-![[Pasted image 20220628010502.png]]
+![[Pasted image 20220628010635.png]]![[Pasted image 20220628010502.png]]
+![[Pasted image 20220628010618.png]]
