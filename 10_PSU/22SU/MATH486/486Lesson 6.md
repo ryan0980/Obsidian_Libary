@@ -5,7 +5,7 @@ rating:
 tags: 学习/数学
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220628 05:47
+date updated: 20220628 05:54
 ---
 
 # 486Lesson 6
@@ -59,3 +59,6 @@ date updated: 20220628 05:47
 
 graph
 
+## **The Ultimatum Minigame**
+
+![[Pasted image 20220628055421.png]]
