@@ -46,3 +46,5 @@ date updated: 20220628 04:27
 ## **Using The Fundamental Theorem to Find MSNE: Two Examples**
 
 ![[Pasted image 20220628043535.png]]
+![[Pasted image 20220628044038.png]]
+
