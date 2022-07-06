@@ -3,7 +3,7 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220617 05:44
+date updated: 20220705 11:50
 ---
 
 # MATH486
@@ -11,6 +11,7 @@ date updated: 20220617 05:44
 [[Math486Syllabus]]
 
 [[Game Theory in Action An Introduction to Classical and Evolutionary Models.pdf]]
+
 [[20220524486video intro]]
 
 ## [[486Lesson 1|Lesson 1]]
@@ -18,8 +19,11 @@ date updated: 20220617 05:44
 Introduction and Overview [[486Lesson 1]] Backward Induction, Extensive and Normal Form Games
 
 [[20220524486HW1]]
+
 {12/20}
+
 [[20220524486Quiz1]]
+
 {4/5}
 
 ## [[486Lesson 2]]
@@ -27,8 +31,11 @@ Introduction and Overview [[486Lesson 1]] Backward Induction, Extensive and Norm
 Continuous Strategy Games, Stackelberg Duopoly, Dominated Strategies, Prisonerâ€™s Dilemma
 
 [[20220531486HW2]]
+
 {17/20}
+
 [[20220531486Quiz2]]
+
 {4/5}
 
 ## [[486Lesson 3]]
@@ -36,8 +43,11 @@ Continuous Strategy Games, Stackelberg Duopoly, Dominated Strategies, Prisonerâ€
 Auctions, Iterated Elimination of Dominated Strategies
 
 [[20220530486HW3]]
+
 {17/20}
+
 [[20220530486Quiz3]]
+
 {3/5}
 
 ## [[486Lesson 4]]
@@ -51,6 +61,8 @@ Lotteries, Incomplete Information, Mixed Strategies
 ## [[486Lesson 6]]
 
 Mixed Strategy Nash Equilibria, Applications
+
+[[20220705486Midterm-SU22.pdf]]
 
 ## [[486Lesson 7]]
 
