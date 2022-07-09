@@ -4,7 +4,7 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220709 03:18
+date updated: 20220709 03:56
 ---
 
 # STAT200_知识点
@@ -31,3 +31,7 @@ in Observational Study, 观察人员只会观察
 ### A Placebo is a Fake Treatment Used in Experiments.
 
 **安慰剂**
+
+## Biased
+
+不要有偏向
