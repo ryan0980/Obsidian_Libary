@@ -79,4 +79,5 @@ There are not yet any previous classes, so the cumulative frequency is 4.
 
 ## Quartile
 IQR
+interquartile range
 ![[Pasted image 20220710193441.png]]
