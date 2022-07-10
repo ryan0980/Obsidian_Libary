@@ -53,3 +53,7 @@ In a frequency distribution, the class width is the distance between the lower 
 ![[Pasted image 20220710094127.png]]
 ![[Pasted image 20220710101803.png]]
 
+
+## Frequency table
+![[Pasted image 20220710104531.png]]
+![[Pasted image 20220710104509.png]]
