@@ -4,7 +4,7 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220709 03:56
+date updated: 20220710 09:28
 ---
 
 # STAT200_知识点
@@ -35,3 +35,7 @@ in Observational Study, 观察人员只会观察
 ## Biased
 
 不要有偏向
+
+## Sum And Percentages
+
+If percentages are used, the sum should be 100%. If proportions are used, the sum should be 1.
