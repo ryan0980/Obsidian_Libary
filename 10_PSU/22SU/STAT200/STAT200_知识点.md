@@ -4,7 +4,7 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220710 05:31
+date updated: 20220710 07:49
 ---
 
 # STAT200_知识点
@@ -78,6 +78,13 @@ There are not yet any previous classes, so the cumulative frequency is 4.
 ![[Pasted image 20220710173029.png]]
 
 ## Quartile
+
 IQR
+
 interquartile range
+
 ![[Pasted image 20220710193441.png]]
+
+## Z Score
+
+![[Pasted image 20220710194956.png]]
