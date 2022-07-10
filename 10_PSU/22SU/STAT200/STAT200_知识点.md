@@ -57,7 +57,7 @@ In a frequency distribution, the class width is the distance between the lower 
 
 ![[Pasted image 20220710104531.png]]
 ![[Pasted image 20220710104509.png]]
-
+0-39， 39/5=7.8~=7
 Frequency =出现频率
 
 Midpoint=(lower+upper)/2
