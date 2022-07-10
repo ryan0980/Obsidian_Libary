@@ -4,7 +4,7 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220710 05:06
+date updated: 20220710 05:24
 ---
 
 # STAT200_知识点
@@ -57,7 +57,9 @@ In a frequency distribution, the class width is the distance between the lower 
 
 ![[Pasted image 20220710104531.png]]
 ![[Pasted image 20220710104509.png]]
-0-39， 39/5=7.8~=7
+0-39， 39/5=7.8~=8（round up)
+然后作为lower class
+
 Frequency =出现频率
 
 Midpoint=(lower+upper)/2
