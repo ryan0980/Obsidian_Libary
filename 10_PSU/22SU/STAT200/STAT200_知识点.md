@@ -4,7 +4,7 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220710 09:41
+date updated: 20220710 10:18
 ---
 
 # STAT200_知识点
@@ -46,4 +46,10 @@ In a frequency distribution, the class width is the distance between the lower 
 
 ## Upper Class and Lower Class
 
+### Midpoint
+
+### Class Boundaries
+
 ![[Pasted image 20220710094127.png]]
+![[Pasted image 20220710101803.png]]
+
