@@ -76,3 +76,7 @@ There are not yet any previous classes, so the cumulative frequency is 4.
 
 就是十位数作为stem, 个位数作为leaf
 ![[Pasted image 20220710173029.png]]
+
+## Quartile
+IQR
+![[Pasted image 20220710193441.png]]
