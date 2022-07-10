@@ -39,3 +39,6 @@ in Observational Study, 观察人员只会观察
 ## Sum And Percentages
 
 If percentages are used, the sum should be 100%. If proportions are used, the sum should be 1.
+
+## Class width
+In a frequency distribution, the class width is the distance between the lower or upper limits of consecutive classes.
