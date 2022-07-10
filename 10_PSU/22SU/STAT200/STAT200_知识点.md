@@ -4,7 +4,7 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220710 05:24
+date updated: 20220710 05:31
 ---
 
 # STAT200_知识点
@@ -71,3 +71,8 @@ The **cumulative frequency** is the sum of the frequency for that class and all 
 There are not yet any previous classes, so the cumulative frequency is 4.
 
 ![[Pasted image 20220710170734.png]]
+
+## Stem-and-leaf Plot
+
+就是十位数作为stem, 个位数作为leaf
+![[Pasted image 20220710173029.png]]
