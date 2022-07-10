@@ -4,7 +4,7 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220710 10:18
+date updated: 20220710 05:06
 ---
 
 # STAT200_知识点
@@ -53,7 +53,19 @@ In a frequency distribution, the class width is the distance between the lower 
 ![[Pasted image 20220710094127.png]]
 ![[Pasted image 20220710101803.png]]
 
+## Frequency Table
 
-## Frequency table
 ![[Pasted image 20220710104531.png]]
 ![[Pasted image 20220710104509.png]]
+
+Frequency =出现频率
+
+Midpoint=(lower+upper)/2
+
+Relative Frequency=Class Frequency \/ Sample Size
+
+The **cumulative frequency** is the sum of the frequency for that class and all previous classes.
+
+There are not yet any previous classes, so the cumulative frequency is 4.
+
+![[Pasted image 20220710170734.png]]
