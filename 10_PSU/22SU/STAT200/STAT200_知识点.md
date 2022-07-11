@@ -92,3 +92,6 @@ interquartile range
 ---
 
 ![[Pasted image 20220710200917.png]]
+
+---
+![[Pasted image 20220710202406.png]]
