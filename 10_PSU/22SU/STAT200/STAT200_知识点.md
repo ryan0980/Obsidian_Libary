@@ -4,7 +4,7 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220710 08:09
+date updated: 20220710 08:24
 ---
 
 # STAT200_知识点
