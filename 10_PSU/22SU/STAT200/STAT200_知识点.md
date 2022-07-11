@@ -4,7 +4,7 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220710 07:49
+date updated: 20220710 08:09
 ---
 
 # STAT200_知识点
@@ -88,3 +88,7 @@ interquartile range
 ## Z Score
 
 ![[Pasted image 20220710194956.png]]
+
+---
+
+![[Pasted image 20220710200917.png]]
