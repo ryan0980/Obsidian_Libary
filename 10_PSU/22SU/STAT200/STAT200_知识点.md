@@ -4,7 +4,7 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220710 08:24
+date updated: 20220711 08:16
 ---
 
 # STAT200_知识点
@@ -18,6 +18,10 @@ qualitative describes an attribute or characteristic.
 ![[Pasted image 20220709150714.png]]
 
 ![[Pasted image 20220709150600.png]]
+
+## Statistic and Parameter
+
+![[Pasted image 20220711201552.png]]
 
 ## An Observational Study and an Experiment
 
