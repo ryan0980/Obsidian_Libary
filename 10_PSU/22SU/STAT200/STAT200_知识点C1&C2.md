@@ -4,10 +4,10 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220711 08:16
+date updated: 20220715 12:16
 ---
 
-# STAT200_知识点
+# STAT200_知识点C1&C2
 
 ## Quantitative & Qualitative
 
