@@ -1,0 +1,1584 @@
+// Indicates local development. This causes middlewareBase() function to map psu.test.instructure.com to localhost
+var is_local_development = false;
+
+//----------------------
+// Logging Into Canvas check
+//----------------------
+$('.ic-Login__body').prepend('<div class="ic-flash-warning" style="width:100%;color: #000000;">    <div class="ic-flash__icon" aria-hidden="true">      <i class="icon-warning"></i>    </div>Enter the same username and password you use in Lion Path or Office 365 (ex:abc1212)</div>')
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+// Dashboard Page Items 
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+var PsuResources = {
+    processResourceCardData: function (data) {
+        var htmldata = '';
+        var resourcesJsonUrl = middlewareBase() + "/DashboardResources.aspx";
+
+        if (data !== undefined && data != null) {
+            if (data.error != undefined && data.error !== null && data.error.length >= 1) {
+                htmldata = '<h3>Unable to get resources</h3><br/><small>' + data.error + '</small>';
+            } else {
+                $.each(data.cards, function (index, card) {
+                    htmldata += '<div aria-label="' + card.title + '" style="border-bottom-color:#666;" class="ic-DashboardCard">'
+                    htmldata += '   <div class="ic-DashboardCard__header style="display:block;"">';
+                    htmldata += '       <span class="screenreader-only" >Image for resource ' + card.title + '</span>';
+                    htmldata += '       <a href="' + card.resource_url + '" class="ic-DashboardCard__link" target="_blank">';
+                    if (card.appearance == 'StoredImage') {
+                        htmldata += '           <div class="ic-DashboardCard__header_image" style="background-image:url(' + resourcesJsonUrl + '?card_image_id=' + card.id + ');background-size:100% 100%;">';
+                    }
+                    else if (card.appearance == 'LinkedImage') {
+                        htmldata += '           <div class="ic-DashboardCard__header_image" style="background-image:url(' + card.card_image_url + ');background-size:100% 100%;">';
+                    }
+                    else if (card.appearance == 'Tile') {
+                        htmldata += '           <div class="ic-DashboardCard__header_image" style="background-color:#' + card.tile_color + '; " >';
+                    }
+                    else {
+                        htmldata += '           <div class="ic-DashboardCard__header_image" style="background-color:#888888;" >';
+                    }
+                    htmldata += '               <div class="ic-DashboardCard__header_hero" style="background-color:#111111;opacity:0;" aria-hidden="true" ></div>';
+                    htmldata += '           </div>';
+                    htmldata += '           <div class="ic-DashboardCard__header_content">';
+                    htmldata += '               <h2 class="ic-DashboardCard__header-title ellipsis" title="' + card.title + '" >';
+                    htmldata += '                   <span style="color:#111111;">' + card.title + '</span>';
+                    htmldata += '               </h2>';
+                    if (card.sub_title != undefined && card.sub_title != null && card.sub_title.length >= 1) {
+                        htmldata += '               <div class="ic-DashboardCard__header-subtitle ellipsis" title="' + card.sub_title + '">' + card.sub_title + '</div>';
+                    }
+                    else {
+                        htmldata += '               <div class="ic-DashboardCard__header-subtitle ellipsis" style="margin-bottom:18px;"></div>';
+                    }
+                    htmldata += '           </div>';
+                    htmldata += '       </a>';
+                    htmldata += '   </div>';
+                    htmldata += '</div>';
+                    htmldata += '</div>';
+                });
+
+                if (htmldata == "") {
+                    htmldata = "<h3>No Resources found</h3>";
+                }
+            }
+        } else {
+            htmldata = "<h3>Canvas Error loading. Please try again later</h3>";
+        }
+
+        return htmldata;
+    },
+
+    get_resources: function () {
+        onElementRendered('#dashtabs-2', function (elems, retryCount) {
+
+            const resourceTab = elems[0];
+
+            resourceTab.innerHTML = '<div class="loading center loadingIndicator"></div>';
+
+            fetch(middlewareBase() + "/DashboardResources.aspx")
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (responseJson) {
+                    resourceTab.innerHTML = PsuResources.processResourceCardData(responseJson);;
+                })
+                .catch(function (error) {
+                    resourceTab.innerHTML = "<h3>Error retrieving resources " + error.message + "</h3>";
+                });
+        });
+    },
+
+    setupDashboardResourcesTab: function () {
+
+        // we need to make sure at least one card is loaded before going any further
+        onElementRendered('.icon-more', function (el, num) {
+
+            const cardContainer = document.getElementById('DashboardCard_Container');
+            if (!cardContainer)
+                return;
+
+            // hide rule under "Dashboard" heading
+            // ------------------------------------
+            if (dashboardHeader = document.querySelector('.ic-Dashboard-header__layout'))
+                dashboardHeader.style.borderBottom = '0px';
+
+            // fix card box alignment
+            // -----------------------
+            if (cardContainers = document.querySelectorAll(".ic-DashboardCard__box__container")) {
+                cardContainers.forEach((currentValue) => {
+                    currentValue.style.margin = "0px 0px 0px 0px";
+                });
+            }
+
+            cardContainer.className = "ui-tabs-minimal ui-tabs ui-widget ui-widget-content ui-corner-all";
+
+            var targetDashboardBox;
+            var targetDashboardBoxClass;
+
+            if (authorDashboardBox = document.querySelector('#DashboardCard_Container div.unpublished_courses_redesign')) {
+                targetDashboardBox = authorDashboardBox;
+                targetDashboardBoxClass = 'unpublished_courses_redesign tabcontent';
+
+            } else if (studentDashboardBoxes = document.querySelectorAll('#DashboardCard_Container div.ic-DashboardCard__box')) {
+                // find correct container for Canvas dashboard cards
+                studentDashboardBoxes.forEach((currentValue) => {
+                    if (targetDashboardBox == null && currentValue.querySelector(".icon-more")) {
+                        targetDashboardBox = currentValue;
+                        targetDashboardBoxClass = 'ic-DashboardCard__box tabcontent';
+                    }
+                });
+            }
+
+            if (targetDashboardBox != null) {
+
+                // setup Canvas tab id and class
+                // ------------------------------
+                targetDashboardBox.id = 'dashtabs-1';
+                targetDashboardBox.className = targetDashboardBoxClass;
+
+                // add tab bar
+                // ------------
+                if (document.getElementById("psu_tab_bar") == null) {
+                    var tabBarHtml = [
+                        '<ul id="psu_tab_bar" class="collectionViewItems ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" style="padding: 5px 0 0 0;" role="tablist">',
+                        '<li class="tablinks static ui-state-default ui-corner-top ui-tabs-active" role="tab" tabindex="0">',
+                        '<a id="ui-id-1" tabindex="-1" role="presentation" class="ui-tabs-anchor" onclick="PsuResources.openTab(event, &quot;dashtabs-1&quot;)">',
+                        'Canvas',
+                        '</a>',
+                        '</li>',
+                        '<li class="tablinks ui-state-default ui-corner-top " role="tab" tabindex="-1">',
+                        '<a id="ui-id-2" tabindex="-1" role="presentation" class="ui-tabs-anchor" onclick="PsuResources.openTab(event, &quot;dashtabs-2&quot;)">',
+                        '<img src="https://lmstools.ais.psu.edu/favicon.ico" />',
+                        'Resources',
+                        '</a>',
+                        '</li>',
+                        '</ul>'
+                    ].join("\n");
+
+                    targetDashboardBox.insertAdjacentHTML('beforebegin', tabBarHtml);
+                }
+
+                // add Resources tab
+                // ------------------
+                if (document.getElementById("dashtabs-2") == null) {
+                    targetDashboardBox.insertAdjacentHTML('afterend', '<div id="dashtabs-2" class="ic-DashboardCard__box tabcontent" style="display: none;"></div>');
+                }
+            }
+        });
+    },
+
+    openTab: function (evt, tabName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("ui-tabs-active");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        if (currentTab = document.getElementById(tabName)) {
+            currentTab.style.display = "block";
+        }
+        else {
+            console.log("openTab - Tab " + tabName + " not found");
+        }
+
+        evt.currentTarget.parentNode.classList.add("ui-tabs-active");
+    },
+
+    setupMutationObserver: function () {
+        // in case React updates the div containing dashboard cards, use a MutationObserver to reinitialize
+        var dashboardCardMutationObserver = new MutationObserver(function (mutationsList, observer) {
+            PsuResources.setupDashboardResourcesTab();
+        });
+
+        if (dashboardCardDiv = document.getElementById('DashboardCard_Container'))
+            dashboardCardMutationObserver.observe(dashboardCardDiv, { attributes: false, childList: true, subtree: true });
+    }
+};
+
+onPage(/^\/$/, function () {
+    PsuResources.setupDashboardResourcesTab();
+    PsuResources.get_resources();
+    PsuResources.setupMutationObserver();
+});
+
+
+//Adding right side buttons for custom tools
+onElementRendered('#right-side-wrapper', function (el, num) {
+    var customRightNavMenuFunc = function (isStudent) {
+        if (isCanvasDashboardPage()) {
+            var canvasRightNavContainerId = 'aside#right-side';
+            $(displayStudentEngagementNetwork(isStudent)).prependTo(canvasRightNavContainerId);
+            $(displayRequestCourseSpaces(isStudent)).appendTo(canvasRightNavContainerId)
+        }
+    };
+
+    var onCustomRightNavMenuRendered = function (className, isStudent) {
+        onElementRendered(className, function (el, num) { customRightNavMenuFunc(isStudent); });
+    }
+
+    onCustomRightNavMenuRendered('.coming_up', false);	// .coming_up => Available to non-students
+    onCustomRightNavMenuRendered('.Sidebar__TodoListContainer', true);	// .Sidebar__TodoListContainer => Available to students
+});
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+// Account Page Items 
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+onPage(/\/accounts\/\d+\/external_tools/, function () {
+    if ($('#tool_form').attr('data-tool-id') === 'course_search') {
+        $('.ic-Layout-wrapper').css('max-width', 'none');
+    }
+
+    // Adjust iFrame width to be responsive
+    if ($('#tool_form').attr('data-tool-path') == '/psultipages/systemmessages.aspx') {
+        $('iframe.tool_launch').css('width', '90vw');
+    }
+});
+
+// Remove the LTI launch from the Accounts menu
+onPage(/\/accounts((\/\w+)+|\/?)/, function () {
+    // NOTE:
+    //    - The LTI launch is placed on the Accounts menu because Canvas doesn't support placements on the global nav.
+    //    - As a workaround, the function initMenuIcon() injects a global nav menu item that references the LTI launch.
+    //    - The following code removes the menu item from the Accounts nav.
+    $('#section-tabs .section').each(function () {
+        if ($(this).find('a').html() === 'System Messages') {
+            $(this).remove();
+            return false;  // Equivalent of break; in a standard loop.
+        }
+    });
+});
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+// User Account customization
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Account Profile: Hide Pride, Merge, Sandbox and Manual Course links on side menu
+onPage(/\/profile/, function () {
+    $("#section-tabs li:contains('Pride')").hide();
+    $("#section-tabs li:contains('Merge Courses')").hide();
+    $("#section-tabs li:contains('Sandbox')").hide();
+    $("#section-tabs li:contains('Request Manual Course')").hide();
+    $("#section-tabs li:contains('Report a Problem')").hide();
+    $("#section-tabs li:contains('Archive')").hide();
+});
+
+onPage(/\/eportfolios/, function () {
+    $("#section-tabs li:contains('Pride')").hide();
+    $("#section-tabs li:contains('Merge Courses')").hide();
+    $("#section-tabs li:contains('Sandbox')").hide();
+    $("#section-tabs li:contains('Request Manual Course')").hide();
+    $("#section-tabs li:contains('Report a Problem')").hide();
+    $("#section-tabs li:contains('Archive')").hide();
+});
+
+//----------------------
+// Courses Page customization
+//----------------------
+
+//add helplink to gradebook page
+onPage(/\/courses\/\d+\/gradebook/, function () {
+    //onElementRendered('.header-buttons', function (el, num) {
+    if (window.location.href.indexOf("speed_grader") == -1) {
+        onElementRendered('#main', function (el, num) {
+            var sgradebooklink = '<div style="padding-left: 30px;/"><img  src="https://lmstools.ais.psu.edu/favicon.ico"/><a target = "_blank" href="https://pennstate.service-now.com/sp?id=kb_article_view&sysparm_article=KB0010791">Prepare Final Grades in Canvas for Lion Path</a></div>'
+            $('#main').prepend(sgradebooklink);
+        });
+    }
+});
+
+onPage(/\/accounts\/\d+\/external_tools/, function () {
+    initCanvasHelpPage();
+});
+
+onPage(/\/courses\/\d+\/external_tools/, function () {
+    initCanvasHelpPage();
+});
+
+//-------------------------------
+//customize tools in course
+
+// course Collaborations page - tweak content to reference PSU Office 365
+onPage(/\/courses\/\d+\/collaborations/, function () {
+    onElementRendered('#no_collaborations_message>p:first', function (el, num) {
+        $('#no_collaborations_message>p:first').html("<strong>What do we mean by collaborations?</strong>  We're talking about web-based tools that most likely your students are already familiar with.  Students can use resources like <a href='https://pennstate.service-now.com/nav_to.do?uri=%2Fkb_view.do%3Fsys_kb_id%3Da0cfb1addbc1234ca318fb671d9619f5' class='external' target='_blank' rel='noreferrer noopener'><span>Office 365</span><span class='ui-icon ui-icon-extlink ui-icon-inline' title='Links to an external site.'><span class='screenreader-only'>Links to an external site.</span></span></a> to work collaboratively on tasks like group papers or note-taking.  This page gives them (and you) an easy place to keep track of those collaborations, and also to set them up without having to swap emails.")
+            .css('display', 'block');
+    });
+
+    onElementRendered('#right-side-wrapper>aside#right-side>p', function (el, num) {
+        $('#right-side-wrapper>aside#right-side>p').html("Online web tools like <a href='https://pennstate.service-now.com/nav_to.do?uri=%2Fkb_view.do%3Fsys_kb_id%3Da0cfb1addbc1234ca318fb671d9619f5' target='_blank'>Office 365</a> are an excellent place for students to work on group projects or papers, take shared notes, etc. Teachers <em>or</em> students can set up group collaborations.")
+            .css('display', 'block');
+    });
+});
+
+//Add roster edit for admins and teachers.
+onPage(/\/courses\/\d+\/settings/, function () {
+    //remove reset course button *** 7/7/21 unhide reset course button
+    //onElementRendered('.reset_course_content_button', function (el, num) {
+    //  $('.reset_course_content_button').hide();
+    //});
+    // remove conclude course and end date
+    onElementRendered('a:contains("Conclude this")', function (el, num) {
+        $('a:contains("Conclude this")').hide();
+    });
+});
+
+// Update term participation start/end date warning message (git 548)
+onPage(/\/courses\/\d+\/settings/, function () {
+    const TERM_MESSAGE =
+        "<strong>Penn State does not set Term start and end dates in Canvas. Use Course start/end dates to limit course participation<strong>.";
+
+    const COURSE_MESSAGE =
+        "Course participation is limited to <strong>course</strong> start and end dates. Any section dates created in the course may override course dates.";
+
+    const updateParticipationMessage = function () {
+        const checkBoxSiblings = document.querySelector(".CourseAvailabilityOptions span input[type=checkbox]")?.parentElement?.parentElement?.parentElement?.children;
+        if (checkBoxSiblings?.length < 2)
+            return;
+
+        const termMessageSpan = checkBoxSiblings[1].querySelector("span");
+        if (!termMessageSpan)
+            return;
+
+        termMessageSpan.innerHTML = termMessageSpan.innerHTML.includes("term") ? TERM_MESSAGE : COURSE_MESSAGE;
+    };
+
+    const DROPDOWN_SELECTOR = ".CourseAvailabilityOptions span input[type=text]";
+
+    onElementRendered(DROPDOWN_SELECTOR, () => {
+        const availabilityDropdown = document.querySelector(DROPDOWN_SELECTOR);
+        if (!availabilityDropdown)
+            return;
+
+        const observer = new MutationObserver(updateParticipationMessage);
+        observer.observe(availabilityDropdown, { attributes: true, attributeFilter: ['value'] });
+
+        updateParticipationMessage();
+    });
+});
+
+/**
+ * Caches the course ID of the last course viewed before accessing the Canvas Help page.
+ * Due to the placement of the LTI launch outside of the course, the course ID cannot be retrieved from the payload and must be cached in advance.
+**/
+onPage(/\/courses((\/\w+)+|\/?)/, function () {
+    // Only cache the course ID when the user clicks the 'Help' button
+    $('#global_nav_help_link').click(function () {
+        var cacheCourseIdFunc = function (jwtToken) {
+            $.ajax({
+                type: "POST",
+                url: middlewareBase() + "/PsuLtiPages/canvashelp.aspx?action=cache_course_id",
+                data: { JWT: jwtToken, CourseId: getCourseId() }
+            });
+        };
+
+        // The tool ID *MUST* be an existing tool that's available to everyone. 197674 refers to System Messages (Notices)
+        getJwtToken(197674, cacheCourseIdFunc);
+    });
+});
+
+// Add roster print view for admins and teachers.
+onPage(/\/courses\/\d+\/users/, function () {
+
+    //replace people link.
+    onElementRendered('a#addUsers', function (el, num) {
+        $('a#addUsers').hide();
+    });
+
+    onElementRendered('#people-options', function (el, num) {
+        var peopleOptionsFunc = function (roles) {
+
+            if (roles.indexOf('Admin') > -1 || roles.indexOf('Course Admin') > -1 || roles.indexOf('TeacherEnrollment') > -1 || roles.indexOf('DesignerEnrollment') > -1 || roles.indexOf('Pride Admin') > -1) {
+                var setMenuItem = function (label, callbackFunc) { $('#people-options ul').append('<li class="ui-menu-item" role="presentation"><a href="javascript:' + callbackFunc + ';"><span class="addPSUicon" style="margin-right: 8px;"></span>' + label + '</a></li>'); };
+
+                if (isOfficialCourse()) {
+                    setMenuItem('Print View', 'displayCourseRosterPrintView()');
+                }
+
+                setMenuItem('Add/Drop', 'displayAddDrop()');
+
+                var unEnrollMenuItemFunc = function (isManuallyEnrolled) { if (isManuallyEnrolled) { setMenuItem('Un-enroll from Course', 'displayCourseSelfRemoval()'); } };
+                isCurrentUserManuallyEnrolled(unEnrollMenuItemFunc)
+            }
+        }
+
+        getCourseRole(function (roles) { peopleOptionsFunc(roles) });
+    });
+
+    onElementRendered('select[name="enrollment_role_id"]', function (el, num) {
+        var displayEnrollmentButtons = function (roles) {
+            if (roles.indexOf('Admin') > -1 || roles.indexOf('Course Admin') > -1 || roles.indexOf('TeacherEnrollment') > -1 || isPrideAdmin()) {
+                var addUserButton = '<a href="javascript:displayAddEnrollment()" class="btn btn-primary psu" id="PSUaddUsers" role="button" title="Add People" aria-label="Add People">Add People</a>';
+                var editUsersButton = '<a href="javascript:displayEditEnrollment()" class="btn btn-primary psu" id="PSUeditUsers" role="button" title="Edit People" aria-label="Edit People">Edit People</a>';
+                var userButtonHtml = editUsersButton + '&nbsp;' + addUserButton;
+                $('<div class="pull-right">' + userButtonHtml + '</div>').insertAfter('select[name="enrollment_role_id"]');
+
+                canViewConfidentialEnrollments();
+            }
+        }
+        getCourseRole(function (roles) { displayEnrollmentButtons(roles) })
+    });
+});
+
+// ==UserScript==
+// @name         Print Canvas Quiz
+// @namespace    https://github.com/sukotsuchido/CanvasUserScripts
+// @version      1.0
+// @description  Allows the user to print quizzes from the preview page.
+// @author       Chad Scott (ChadScott@katyisd.org)
+// @include      https://*.instructure.com/courses/*/quizzes/*/take?preview*
+// ==/UserScript==
+(function () {
+    if (document.location.href.match(/\/courses\/\d+\/quizzes\/\d+\/take\?preview=1/) != null) {
+        var parent = document.querySelector('#right-side');
+        el = document.createElement('button');
+        el.classList.add('Button', 'element_toggler', 'button-sidebar-wide');
+        el.type = 'button';
+        el.id = 'printQuizButton';
+        var icon = document.createElement('i');
+        icon.classList.add('icon-document');
+        el.appendChild(icon);
+        var txt = document.createTextNode(' Print');
+        el.appendChild(txt);
+        el.addEventListener('click', allMatchQuestions);
+        parent.appendChild(el);
+    }
+})();
+
+/* Hide New Quizzes LTI button */
+
+var LMS = {
+    onElementRendered: function (selector, cb, _attempts) {
+        'use strict';
+        var el = $(selector);
+        _attempts = ++_attempts || 1;
+
+        if (el.length) {
+            return cb(el);
+        }
+        if (_attempts === 60) {
+            return;
+        }
+
+        setTimeout(function () {
+            LMS.onElementRendered(selector, cb, _attempts);
+        }, 250);
+    },
+    removeElementOnRender: function (selector) {
+        'use strict';
+        if (!LMS.isQuizzesNextPilotCourse()) {
+            LMS.onElementRendered(selector, function (selector) {
+                var $el = $(selector);
+                $el.remove();
+            });
+        }
+    },
+    isQuizzesNextPilotCourse: function () {
+        'use strict';
+        // Courses with these IDs will have Quizzes.Next functionality enabled
+        var visibleCourseIds = ["1959864", "1959863", "1959696", "1971396", "1971396", "2009771", "1974609", "2009772", "2009773", "2009774", "2051681"];
+
+        var courseIdMatch = location.pathname.match(/\/courses\/(\d+)/);
+        var courseId = courseIdMatch != null ? courseIdMatch[1] : -1;
+
+        return visibleCourseIds.includes(courseId);
+    }
+};
+
+// Register event handlers to hide new Quizzes 2 tool in external tool selectors
+$("body").on("click", "button#assignment_external_tool_tag_attributes_url_find", function (e) {
+    LMS.removeElementOnRender("li:contains('Quizzes 2')");
+});
+
+$("body").on("change", "select#add_module_item_select", function (e) {
+    if ($(this).val() === "context_external_tool") {
+        LMS.removeElementOnRender("li:contains('Quizzes 2')");
+    }
+});
+
+// Register event handler to hide Quizzes page "Migrate" option in "..." button drop downs
+onPage(/\/courses\/\d+\/quizzes$/, function () {
+    $("body").on("mousedown", "a[role=button]", function (e) {
+        LMS.removeElementOnRender("li ul li:has(a[title='Migrate Quiz'])");
+    });
+});
+
+onPage(/\/courses\/\d+/, function () {
+    // assume that css is hiding the Assignments page "+ Quiz/Test" button
+    // by setting class 'new_quiz_lti_wrapper' to display:none
+
+    if (LMS.isQuizzesNextPilotCourse()) {
+        // unhide the Assignments page " + Quiz/Test" button
+        $('.new_quiz_lti_wrapper').css('display', 'inline');
+    }
+});
+
+
+/**
+ * Sets a session timeout on Canvas' LDAP page
+ * After the timeout, the request is redirected to the main login page
+**/
+onPage(/\/login\/ldap/, function () {
+    var canvasLoginExpires;
+
+    if (window.location.href.split(/[?]/).length > 1) {
+        canvasLoginExpires = window.location.href.split(/[?]/)[1].split('=')[1];
+        localStorage.setItem('canvas_login_expires', canvasLoginExpires);
+    }
+    else {
+        canvasLoginExpires = localStorage.getItem('canvas_login_expires');
+    }
+
+    // Strip the expires value from the browser's URL.
+    // If the end-user bookmarks this link and the session expires, they'll be redirect to the main login page
+    history.pushState(null, "Log In to Canvas", window.location.href.split(/[?]/)[0]);
+
+    if (canvasLoginExpires == undefined || Date.now() > canvasLoginExpires) {
+        localStorage.removeItem('canvas_login_expires');
+        window.location.replace(middlewareBase() + '/canvasauth/index.html');
+    }
+});
+
+onPage(/\/courses\/(\d+|(sis_course_id:[0-9a-zA-Z-]+))($|(\/settings))/, function () {
+    const courseId = getCourseId();
+
+    const isArchivedCourse = function (jwtToken) {
+        const api = middlewareBase() + "/api/v1/psuapi/coursearchive/" + courseId;
+
+        $.ajax({
+            async: true, dataType: 'json', data: { token: jwtToken }, url: api, type: 'POST',
+            success: function (data) {
+                if (data.length > 0) {
+                    status = data[0].Status;
+                    localStorage.setItem(getLocalArchiveStatusKey(courseId), JSON.stringify({ "status": status, "timestamp": Date.now() }));
+                    updateArchiveStatusUI(status);
+                }
+            }
+        });
+    }
+
+    const getLocalArchiveStatusKey = function (courseId) {
+        return "archiveStatus_" + courseId;
+    };
+
+    const getLocalArchiveStatusItem = function (courseId) {
+        var archiveStatusItem = localStorage.getItem(getLocalArchiveStatusKey(courseId));
+        if (archiveStatusItem) {
+            return JSON.parse(archiveStatusItem);
+        }
+    };
+
+    const updateArchiveStatusUI = function (status) {
+        if (status == "Archived" || status == "LongTerm") {
+            const iFrameId = 'archivedIframe';
+            let modalHtml = getModalHtml('Archived Course', iFrameId, '200px', '400px');
+
+            modalHtml = modalHtml.replace('Close</span>', 'OK</span>');
+            $('#content').append(modalHtml);
+
+            $('#close').click(function () { $('#modal_demo').remove(); });
+
+            const statusDescription = status == "Archived" ? "archived" : "put into long term storage";
+            let formHtml = '<p>This course has been ' + statusDescription + '.</p>';
+            const courseArchiveManagerHref = "https://" + document.location.hostname + "/users/self/external_tools/214445";
+            const courseArchiveManagerHTML = '<p>See the <a id="close" href="' + courseArchiveManagerHref + '" role="button" aria-label="Navigate to course archive manager"><span class="ui-button-text" id="courseArchiveManagerBtn">Course Archive Manager</span></a> for more information.</p>';
+
+            formHtml += courseArchiveManagerHTML;
+            document.getElementById(iFrameId).remove();
+            document.getElementById("modal_content").innerHTML = formHtml;
+        }
+    }
+
+    // check local storage first
+    archiveStatusItem = getLocalArchiveStatusItem(courseId);
+    if (archiveStatusItem) {
+        const expirationMillis = 1000 * 60 * 60 * 24; // 24 hours
+        if (Date.now() - archiveStatusItem["timestamp"] > expirationMillis) {
+            localStorage.removeItem(getLocalArchiveStatusKey(courseId));
+            getJwtToken(188455, isArchivedCourse);
+        } else {
+            updateArchiveStatusUI(archiveStatusItem.status);
+        }
+    }
+    else {
+        getJwtToken(188455, isArchivedCourse);
+    }
+});
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+// JavaScript Functions start here
+//-----------------------------------------------------------------------------------------------------------------------------------
+
+function canViewConfidentialEnrollments() {
+    var authorizedToViewFunc = function (jwtToken) {
+        $.ajax({
+            type: "POST",
+            url: middlewareBase() + "/PsuLtiPages/PSURosterConfidential.aspx?action=can_view_enrollments",
+            data: { JWT: jwtToken, CourseId: getCourseId(), UserId: ENV.current_user_id },
+            success: function (data) {
+                showConfidentialUsersButton(jwtToken);
+            }
+        });
+    };
+
+    getJwtToken(188455, authorizedToViewFunc);
+}
+
+function showConfidentialUsersButton(jwtToken) {
+    var buttonHtml = '&nbsp;<a href="#" class="btn btn-primary psu disabled" style="margin-right: 5px;" id="PSUConfidentialUsers" role="button" title="Show Confidential Users" aria-label="Confidential Users">'
+        + 'Confidential Users <img src="' + middlewareBase() + '/Images/ajax-loader-ccc.gif" width=20 height=20 aria-hidden="true"/></a>';
+    $(buttonHtml).insertBefore('#PSUeditUsers');
+
+    var button = $('#PSUConfidentialUsers');
+    var spinner = $('#confidentialUserLoader');
+
+    $.ajax({
+        type: "POST",
+        'url': middlewareBase() + "/PsuLtiPages/PSURosterConfidential.aspx?action=enrollments_exist",
+        data: { JWT: jwtToken, CourseId: getCourseId(), UserId: ENV.current_user_id },
+        complete: function () {
+            spinner.css('display', 'none');
+        },
+        success: function (data) {
+            if (data === "true") {
+                button.removeClass("disabled");
+                button.attr("href", "javascript:showConfidentialUsersDialog('" + jwtToken + "')").text("Confidential Users");
+            } else {
+                button.addClass("disabled").text("No Confidential Users");
+            }
+        }
+    });
+}
+
+function showConfidentialUsersDialog(jwtToken) {
+    var iFrameId = 'confidentialIframe';
+    var modalHtml = getModalHtml('Confidential Users', iFrameId, '500px', '800px');
+
+    $('#content').append(modalHtml);
+    $('#close').click(function () { $('#modal_demo').remove(); });
+
+    var formHtml = '<html>' +
+        '						<body onload="document.forms[0].submit()">' +
+        '		<form action="' + middlewareBase() + '/psuLtiPages/PSURosterConfidential.aspx?action=get_enrollments" method="POST" >' +
+        '			<input type="hidden" name="JWT" value="' + jwtToken + '">' +
+        '								<input type="hidden" name="CourseId" value=' + getCourseId() + '>' +
+        '								<input type="hidden" name="UserId" value=' + ENV.current_user_id + '>' +
+        '							</form>' +
+        '						</body>' +
+        '</html>';
+
+    var iframeDocument = document.getElementById(iFrameId).contentDocument;
+    iframeDocument.open();
+    iframeDocument.write(formHtml);
+    iframeDocument.close();
+}
+
+//-------------------------------
+//Check for the location of the page
+function onPage(regex, fn) {
+    if (location.pathname.match(regex)) fn();
+}
+
+function hasAnyRole( /*roles, cb*/) {
+    var roles = [].slice.call(arguments, 0);
+    var cb = roles.pop();
+    for (var i = 0; i < arguments.length; i++) {
+        if (ENV.current_user_roles.indexOf(arguments[i]) !== -1) {
+            return cb(true);
+        }
+    }
+    return cb(false);
+}
+
+//-------------------------------
+//Check the users role in the course
+function isRole(srole) {
+    if (jQuery("[data-id = " + psu_courseid + "]").children().children("span.subtitle").not("span.enrollment_term").text() == "Enrolled as: " + srole) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function isRoleNewUI(srole) {
+    var canvasAPI = "https://psu.instructure.com/api/v1/courses/" + jQuery("body").attr("class").match(/\bcontext-course_(.[0-9]*)/)[1] + "/enrollments?user_id=" + ENV.current_user_id;
+    var found = false;
+    $.ajax({
+        async: false,
+        dataType: 'json',
+        url: canvasAPI,
+        type: 'GET',
+        success: function (data) {
+            for (var i in data) {
+                $.each(data, function (i, item) {
+                    if (item.role == srole) {
+                        found = true;
+                    } else { }
+                });
+            }
+        }
+    });
+    return found;
+}
+
+function isPrideAdmin() {
+    var canvasAPI = "https://" + location.hostname + "/api/v1/courses/" + jQuery("body").attr("class").match(/\bcontext-course_(.[0-9]*)/)[1];
+    var found = false;
+    $.ajax({
+        async: false,
+        dataType: 'json',
+        url: canvasAPI,
+        type: 'GET',
+        success: function (data) {
+            if (typeof data.sis_course_id !== 'undefined' && data.sis_course_id.includes('Group-')) {
+                for (var i in data.enrollments) {
+                    $.each(data.enrollments, function (i, item) {
+                        if (item.role == 'Pride Admin') {
+                            found = true;
+                        } else { }
+                    });
+                }
+            }
+        }
+    });
+    return found;
+}
+
+function isOfficialCourse() {
+    var canvasAPI = "https://" + location.hostname + "/api/v1/courses/" + jQuery("body").attr("class").match(/\bcontext-course_(.[0-9]*)/)[1];
+    var found = false;
+    $.ajax({
+        async: false,
+        dataType: 'json',
+        url: canvasAPI,
+        type: 'GET',
+        success: function (data) {
+            if (typeof data.sis_course_id !== 'undefined' && data.sis_course_id.match(/^([Mm][Rr][Gg]-)|^(2(\d{3}))/)) {
+                found = true;
+            } else { }
+        }
+    });
+    return found;
+}
+
+function isCurrentUserManuallyEnrolled(callbackFunc) {
+    var isManualEnrollmentFunc = function (jwtToken) {
+        var hostname = middlewareBase();
+        $.ajax({
+            type: 'POST',
+            url: hostname + '/api/v1/psuapi/courses/' + getCourseId() + '/roster?include=is_manually_enrolled',
+            cache: false,
+            dataType: 'json',
+            data: { token: jwtToken },
+            success: function (middlewareData) {
+                var currentUserId = parseJwt(jwtToken)['lis_person_sourcedid'].split('@')[0];
+                for (var i = 0; i < middlewareData[0].Users.length; i++) {
+                    var user = middlewareData[0].Users[i];
+                    if (user.UserId == currentUserId) {
+                        callbackFunc(user.IsManuallyEnrolled);
+                    }
+                }
+
+                callbackFunc(false);
+            }
+        });
+    };
+
+    getJwtToken(188455, isManualEnrollmentFunc);
+}
+
+function isUser(id, cb) {
+    cb(ENV.current_user_id == id);
+}
+
+//-------------------------------
+//get correct middleware
+function middlewareBase() {
+    var baseurl = '';
+    if (location.hostname.toLowerCase() == "localhost") {
+        // Localhost address
+        baseurl = 'https://localhost'
+    } else if (location.hostname.toLowerCase() == "psu.test.instructure.com") {
+        // dev server address
+        baseurl = 'https://lmstoolsdev.ais.psu.edu'
+        // if we're developing locally, map Canvas test to localhost instead of lmstoolsdev
+        if (is_local_development) {
+            baseurl = baseurl = 'https://localhost';
+        }
+    } else if (location.hostname.toLowerCase() == "psu.beta.instructure.com") {
+        //production server address
+        baseurl = 'https://lmstoolsaccept.ais.psu.edu'
+    } else if (location.hostname.toLowerCase() == "psu.instructure.com") {
+        //production server address
+        baseurl = 'https://lmstools.ais.psu.edu'
+    }
+    return baseurl;
+}
+
+//-------------------------------
+//Determine when an element has finished loading
+function onElementRendered(selector, cb, _attempts) {
+    var el = $(selector);
+    _attempts = ++_attempts || 1;
+    if (el.length) return cb(el, _attempts);
+    //  if (_attempts == 60) return;
+    setTimeout(function () {
+        onElementRendered(selector, cb, _attempts);
+    }, 250);
+}
+
+
+/**
+ * Registers a new MessageEvent listener.
+ * The listener will be triggered when a call is made to parent.postMessage() from an iframe.
+ *
+ * @param {String} subject - The expected message subject.
+ * @param {Function} callbackFunc - The callback function to execute when a matching subject is found.
+**/
+function registerMessageEventListener(subject, callbackFunc) {
+    window.addEventListener("message", function (e) {
+        var message = JSON.parse(e.data);
+        if (message.subject === subject) {
+            callbackFunc(message);
+        }
+    });
+}
+
+/**
+ * Manages the layout and badge status for the System Message (Notifications) page.
+ * @class
+**/
+var SystemMessageController = function (externalToolId) {
+    this.externalToolId = externalToolId;
+    this.menuElem = this.getSystemMessageMenuElement();
+    if (this.menuElem != null) {
+        this.initMenuIcon();
+        this.updateMenuSelectedState();
+        this.initBadgeCount();
+        this.hideSubMenus();
+    }
+};
+
+SystemMessageController.prototype = {
+    /**
+     * Gets or sets the menu element.
+     *
+     * @property
+    **/
+    menuElem: null,
+
+    /**
+     * Gets or sets the tool's external ID.
+     *
+     * @property
+    **/
+    externalToolId: -1,
+
+    /**
+     * Indicates whether the user is currently browsing the webpage.
+     *
+     * @function
+     * @Returns {Boolean} True if the page is opened; otherwise, False.
+    **/
+    isPageOpened: function () {
+        /* Note:
+         *   tool_form: Iframe ID
+         *   data-tool-path: LTI tool path */
+        var toolPath = $('#tool_form').attr('data-tool-path');
+        return toolPath !== undefined && toolPath.indexOf('systemmessages') !== -1;
+    },
+
+    /**
+     * Gets a reference to the menu element.
+     *
+     * @function
+     * @returns {Object}
+    **/
+    getSystemMessageMenuElement: function () {
+        var menu = null;
+        $('#menu .ic-app-header__menu-list-item').each(function () {
+            if ($(this).find('.menu-item__text').html().trim() === 'Inbox') {
+                // Clone an existing menu
+                menu = $(this).clone(true);
+            } else if ($(this).find('.menu-item__text').html().trim() === 'Help') {
+                // Insert the newly cloned menu before 'Help'
+                $(this).before(menu);
+            }
+        });
+        return menu;
+    },
+
+    /**
+     * Gets a reference to the menu's badge element.
+     *
+     * @function
+     * @returns {Object}
+    **/
+    getBadgeElem: function () {
+        return this.menuElem.find('.menu-item__badge');
+    },
+
+    /**
+     * Sets the menu badge count.
+     *
+     * @function
+     * @param {Number} totalUnreadMessages - A count of total unread messages.
+    **/
+    setBadgeCount: function (totalUnreadMessages) {
+        var badgeElem = this.getBadgeElem();
+        if (totalUnreadMessages > 0) {
+            badgeElem.text(totalUnreadMessages);
+            badgeElem.show();
+        } else {
+            badgeElem.hide();
+        }
+    },
+
+    /**
+     * Updates the selected state of the menus based on whether the user is currently browsing the page.
+     *
+     * @function
+    **/
+    updateMenuSelectedState: function () {
+        var activeMenuCssClassName = 'ic-app-header__menu-list-item--active';
+
+        if (this.isPageOpened()) {
+            // Clear menu selections
+            $('#menu .ic-app-header__menu-list-item').each(function () {
+                $(this).removeClass(activeMenuCssClassName);
+            });
+
+            // Select the "Notification" menu
+            this.menuElem.addClass(activeMenuCssClassName);
+        } else {
+            // Clear menu selection
+            this.menuElem.removeClass(activeMenuCssClassName);
+        }
+    },
+
+    /**
+     * Hides the breadcrumb and course menus.
+     *
+     * @function
+    **/
+    hideSubMenus: function () {
+        if (!this.isPageOpened()) {
+            return;
+        };
+
+        // Hide breadcrumb "Penn State > Penn State"
+        $('.ic-app-nav-toggle-and-crumbs').hide();
+
+        // Hide course menu
+        $('#left-side').hide();
+
+        // Clear left margin
+        $('.ic-Layout-columns').css('margin-left', '0');
+    },
+
+    /**
+     * Initializes the badge count by:
+     *    - Fetching the count on page load.
+     *    - Registering an event listener to auto-update the badge count when the user interacts with a message.
+     *
+     * @function
+    **/
+    initBadgeCount: function () {
+        // Note: The reference to 'this' will be overwritten in the callback functions. Preserve a reference to it in another variable, 'self'.
+        var self = this;
+        var runScript = checkSession("Notices");
+
+        $.ajax({
+            type: "GET",
+            url: "https://" + location.hostname.toLowerCase() + "/api/lti/accounts/85746/jwt_token",
+            data: {
+                tool_id: 188455
+            },
+            cache: false,
+            dataType: "json",
+            success: function (data) {
+
+                if (typeof data.jwt_token !== undefined && data.jwt_token !== "" && runScript === "true") {
+                    setSession("Notices")
+                    var tokenkey = data.jwt_token;
+                    var domain = middlewareBase();
+                    $.ajax({
+                        type: "POST",
+                        url: domain + "/api/v1/psuapi/messages/summary",
+                        crossDomain: true,
+                        contentType: "application/json",
+                        dataType: "json",
+                        data: JSON.stringify({
+                            "token": tokenkey
+                        }),
+                        success: function (data) {
+                            var totalUnreadMessages = data[0]['total_unread_messages'];
+                            self.setBadgeCount(totalUnreadMessages);
+                        }
+                    });
+                }
+            }
+        });
+
+        // The following listener updates the badge count when the user interacts with a message.
+        registerMessageEventListener('custom.lti.systemMessages.badge', function (message) { self.setBadgeCount(message.totalUnreadMessages); });
+    },
+
+    /**
+     * Initializes the menu icon by:
+     *    - Adding a custom icon
+     *    - Adding a badge
+     *    - Setting the label
+     *
+     * @function
+    **/
+    initMenuIcon: function () {
+        var mailIcon = '<svg xml:space="preserve" enable-background="new 0 0 52 36" viewBox="0 0 52 36" y="0px" x="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="ic-icon-svg svg-icon-mail" style="height: 20px;" version="1.1"><title>icon-inbox</title><path d="M50.5,2.6c0-0.2-0.1-0.4-0.3-0.6c-0.2-0.3-0.5-0.5-0.9-0.5c-0.8-0.6-1.9-0.9-3.1-0.9H5.7c-1.2,0-2.2,0.4-3.1,0.9C2.3,1.5,2,1.7,1.7,2C1.6,2.2,1.5,2.4,1.5,2.6c-0.6,0.8-1,1.9-1,3v24.7c0,2.9,2.2,5.2,5.2,5.2h40.6c3,0,5.2-2.2,5.2-5.2V5.7C51.5,4.5,51.1,3.5,50.5,2.6z M45.9,3.5L26,19.3L6.1,3.5H45.9z M48.5,30.3c0,1.3-0.9,2.2-2.2,2.2H5.7c-1.3,0-2.2-0.9-2.2-2.2V5.7c0-0.1,0-0.2,0-0.3l21.5,17.1c0.3,0.2,0.6,0.3,0.9,0.3s0.7-0.1,0.9-0.3L48.5,5.3c0,0.1,0,0.2,0,0.3V30.3z"/></svg>';
+        var badge = '<span style="display: none" class="menu-item__badge"></span>';
+
+        var menuLink = this.menuElem.find('a');
+        menuLink.html('<div aria-hidden="true" class="menu-item-icon-container">' + mailIcon + badge + '</div><div class="menu-item__text "><img src="https://lmstools.ais.psu.edu/favicon.ico" style="max-width: none">Notices</div>')
+        menuLink.attr('href', '/accounts/85746/external_tools/' + this.externalToolId);
+    }
+}
+
+
+// This function shows the system message icon on the global nav area.  Need to update the toolid after the tool is created.  Commented out until signoff from TLT
+$(function () {
+    var toolId = 197674;
+    new SystemMessageController(toolId);
+});
+
+//-------------------------------
+// Get Canvas Jwt Token
+function getJwtToken(toolId, onSuccessFunc, onErrorFunc) {
+    if (onErrorFunc == undefined) {
+        onErrorFunc = function (jqXHR, textStatus, errorThrown) {
+            console.error("Error getting JWT for Tool ID " + toolId + " : " + jqXHR.responseText);
+            $.flashWarning("Could not retrieve JWT.", 350);
+        }
+    }
+
+    var url = "https://" + location.hostname.toLowerCase() + "/api/lti/accounts/85746/jwt_token";
+
+    $.ajax({
+        type: "GET",
+        url: url,
+        data: {
+            tool_id: toolId,
+        },
+        cache: false,
+        dataType: "json",
+        success: function (data) {
+            onSuccessFunc(data.jwt_token)
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            onErrorFunc(jqXHR, textStatus, errorThrown);
+        }
+    });
+}
+
+//-------------------------------
+// Get course ID
+function getCourseId() {
+    if (ENV.context_asset_string)
+        return ENV.context_asset_string.replace("course_", "");
+
+    return "";
+}
+
+//-------------------------------
+// Get course role
+function getCourseRole(onSuccessFunc) {
+    var getCourseRole = function (jwtToken) {
+        $.ajax({
+            type: "POST",
+            // TODO: replace locahost with location.hostname.toLowerCase()
+            url: middlewareBase() + "/api/v1/psuapi/courses/" + getCourseId() + "/role",
+            cache: false,
+            data: "",
+            dataType: "json",
+            data: { token: jwtToken },
+            success: function (data) {
+                onSuccessFunc(data);
+            }
+        });
+    };
+    getJwtToken(188455, getCourseRole);
+}
+
+//-------------------------------
+// Course roster print view
+function displayCourseRosterPrintView() {
+    var printViewFunc = function (jwtToken) {
+        var hostname = middlewareBase();
+        $.ajax({
+            type: "POST",
+            // TODO: replace locahost with location.hostname.toLowerCase()
+            // url: "https://localhost/api/v1/psuapi/courses/" + getCourseId() + "/roster?include=photos",
+            url: hostname + "/api/v1/psuapi/courses/" + getCourseId() + "/roster?include=photos",
+            cache: false,
+            data: "",
+            dataType: "json",
+            data: { token: jwtToken },
+            success: function (data) {
+                var sortedNames = []
+                for (var j = 0; j < data[0].Users.length; j++) {
+                    var user = data[0].Users[j];
+                    sortedNames.push(user.LastName + ',' + user.FirstName);
+                }
+                sortedNames.sort();
+
+                var tblRoster = '<table><tr>';
+                var numRows = 1;
+                var numColumns = 0;
+                var photoRows = '';
+                var infoRows = '';
+
+                var userEmails = [];
+
+                // Build grid of user data
+                for (var j = 0; j < data[0].Users.length; j++) {
+                    var user = data[0].Users[j];
+
+                    for (var i = 0; i < sortedNames.length; i++) {
+                        var name = sortedNames[i];
+
+                        if (name.indexOf(user.LastName) > -1 && userEmails.indexOf(user.Email) == -1) {
+                            if (numColumns > 3) {
+                                var pageBreak = '';
+                                if (numRows > 1 && (numRows % 3) == 0) {
+                                    pageBreak = '<tr height="145px"><td colspan="4"></td></tr>';
+                                }
+
+                                // Display 4 users (i.e. columns) per row
+                                tblRoster += photoRows + '</tr><tr>' + infoRows + '</tr>' + pageBreak + '<tr>';
+                                photoRows = '';
+                                infoRows = '';
+                                numColumns = 0;
+                                numRows++;
+                            }
+
+                            photoRows += '<td class="psuPhoto"><img class="psuPhoto" src="' + user.PsuImageUrl + '" /></td>';
+                            infoRows += '<td class="userInfo">' + user.FirstName + ' ' + user.LastName + '<br />' + user.Email + '</td>';
+                            numColumns++;
+                            userEmails.push(user.Email);
+                        }
+                    }
+                }
+
+                if (photoRows != '') {
+                    // Append the last row
+                    tblRoster += photoRows + '</tr><tr>' + infoRows + '</tr>';
+                } else {
+                    // Remove unnecessary <tr> tag
+                    tblRoster = tblRoster.slice(0, -4);
+                }
+                tblRoster += '</table>';
+
+                // Display user datagrid on the screen
+                var windowName = 'Print_' + new Date().getTime();
+                var prtWindow = window.open('about:blank', windowName, 'left=100,top=100,right=100,bottom=100,width=900,height=500,scrollbars=1');
+                prtWindow.document.write('<html><head>')
+                prtWindow.document.write('<style>@media print {.noprint {visibility: hidden;} .showprint {visibility: visible;} a[href]:after {content: none !important;} }  img.psuPhoto { width: 200px; height: 222px; display: block; margin: 0 auto; } td.psuPhoto { height: 230px; } td.userInfo { width: 220px; text-align: center; padding-bottom: 30px;}</style></head>');
+                prtWindow.document.write('<body style="background:none !important">');
+                prtWindow.document.write("<input id='printbtn' class='btn noprint' type='button' value='Print' onClick='javascript:window.print();'/><br /><br />")
+                prtWindow.document.write(tblRoster);
+                prtWindow.document.write("<br /><input id='printbtn' class='btn noprint' type='button' value='Print' onClick='javascript:window.print();'/>")
+                prtWindow.document.write('</body></html>');
+                prtWindow.document.close();
+                prtWindow.focus();
+            }
+        });
+    }
+
+    getJwtToken(188455, printViewFunc);
+}
+
+//-------------------------------
+// returns html for modal overlay
+function getModalHtml(modalTitle, iFrameId, height, width) {
+    var modalHtml = '<div id="modal_demo" >' +
+        '     <div id="modal_overlay" class="ui-widget-overlay container middle-xs center-xs"' +
+        '     style="text-align: left; display: flex; position: fixed; z-index: 11; ' +
+        ' left: 84px; top: 0; width: 100%; height: 100%;">' +
+        '         <div id="modal" class="ui-corner-all box-shadow"' +
+        '         style="background-color: #fff; padding: 10px; position: relative; ' +
+        ' width: 100vw; height: 100vw; max-width:' + width + '; max-height:' + height + '; ' +
+        ' -webkit-overflow-scrolling: touch; overflow: auto;">' + // added this line for iOS scrolling'  ">' +
+        '             <div id="modal_header" style="border-bottom: 1px solid #C7CDD1;">' +
+        '                 <h3>' + modalTitle + '</h3>' +
+        '             </div>' +
+        '             <div id="modal_content">' +
+        ' 					<iframe style="border:0; width:100%; height:400px" id="' + iFrameId + '">' +
+        '					</iframe>' +
+        '             </div>' +
+        '             <div id="modal_footer" class="text-right" style="border-top: 1px solid #C7CDD1; padding: 10px;">' +
+        '                 <a class="btn btn-primary ui-corner-all" id="close" role="button" aria-label="Close modal">' +
+        '                    <span class="ui-button-text" id="Close">Close</span>' +
+        '                 </a>' +
+        '             </div>' +
+        '         </div>' +
+        '     </div>' +
+        ' </div>';
+    return modalHtml;
+}
+
+/**
+* Determines whether the current page is Canvas' dashboard.
+*
+* @returns {boolean} True if the current page is Canvas' dashboard page; otherwise false.
+*/
+function isCanvasDashboardPage() {
+    return (window.location.pathname == '/')
+}
+
+/**
+* Generates the 'Student Engagement Application' block.
+* 
+* @returns {string} A container block with a link to Penn State's student engagement application initiative.
+*/
+function displayStudentEngagementNetwork() {
+    return '<div class="PSU_TopRight_nav"><img src="' + middlewareBase() + '/favicon.ico"/><a data-track-category="dashboard" data-track-label="resources" target="_blank"  href="https://engagementapp.psu.edu/">Student Engagement Application</a></div>';
+}
+
+/**
+* Generates the 'Request Course Spaces' block.
+* 
+* @returns {string} A container block titled 'Request Course Spaces' populated with custom PSU buttons.
+*/
+function displayRequestCourseSpaces(isStudent) {
+    var defaultButtonFunc = function (id, url, label) { return '<a class="btn button-sidebar-wide psu-right-sidebar" id="' + id + '" href = "' + url + '">' + label + '</a>'; };
+    var requestPrideButton = defaultButtonFunc('PSU_request_pride', '/users/self/external_tools/194675', 'Pride Manager');
+
+    var container = '<div class="PSU_Right_nav"><h2> Request Course Spaces</h2>';
+
+    container += (requestPrideButton);
+
+    if (!isStudent) {
+        var requestCourseSandboxButton = defaultButtonFunc('PSU_course_sandbox', '/users/self/external_tools/188457', 'Request a Course Sandbox');
+        var requestMergeCourseButton = defaultButtonFunc('PSU_merge_course', '/users/self/external_tools/188455', 'Merge Course Manager');
+        var requestMasterManualCourseButton = defaultButtonFunc('PSU_request_master_manually_enrolled_course', '/users/self/external_tools/194150', 'Request a Master or a Manually Enrolled Course');
+        var ArchiveButton = defaultButtonFunc('PSU_Archive', '/users/self/external_tools/214445', 'Course Archive Manager');
+
+        container += (requestCourseSandboxButton + requestMasterManualCourseButton + '<h2> Manage Courses </h2>' + requestMergeCourseButton + ArchiveButton + '</div>');
+    }
+    else {
+        container += ('</div>');
+    }
+
+    return container;
+}
+
+//-------------------------------
+// display add/drop LTI
+function displayAddDrop() {
+    var addDropFunc = function (jwtToken) {
+        var hostname = middlewareBase();
+        var iFrameId = 'addDropIframe';
+        var modalHtml = getModalHtml('Add/Drop Report', iFrameId, '510px', '800px');
+
+        $('#content').append(modalHtml);
+        $('#close').click(function () { $('#modal_demo').remove(); });
+
+        var formHtml = '<html>' +
+            '						<body onload="document.forms[0].submit()">' +
+            '		<form action="' + hostname + '/psuLtiPages/PSURosterAudit.aspx" method="POST" >' +
+            '								<input type="hidden" name="JWT" value=' + jwtToken + '>' +
+            '								<input type="hidden" name="CourseId" value=' + getCourseId() + '>' +
+            '			<input type="hidden" name="UserId" value=' + ENV.current_user_id + '>' +
+            '							</form>' +
+            '						</body>' +
+            '</html>';
+
+        var iframeDocument = document.getElementById(iFrameId).contentDocument;
+        iframeDocument.open();
+        iframeDocument.write(formHtml);
+        iframeDocument.close();
+    }
+
+    getJwtToken(188455, addDropFunc);
+}
+
+//-------------------------------
+// display add enrollment LTI
+function displayAddEnrollment() {
+    var addEnrollmentFunc = function (jwtToken) {
+        var hostname = middlewareBase();
+        var iFrameId = 'addEnrollmentIframe';
+        var modalHtml = getModalHtml('Add Person', iFrameId, '560px', '800px');
+
+        $('#content').append(modalHtml);
+        $('#close').click(function () {
+            $('#modal_demo').remove();
+            document.location.reload();
+        });
+        $('#' + iFrameId).attr('scrolling', 'no').attr('style', 'border:0; width:100%;height:560px;');
+
+        var formHtml = '<html>' +
+            '	<body onload="document.forms[0].submit()">' +
+            '		<form action="' + hostname + '/psuLtiPages/PSUAddEnrollment.aspx" method="POST" >' +
+            '			<input type="hidden" name="JWT" value=' + jwtToken + '>' +
+            '			<input type="hidden" name="CourseId" value=' + getCourseId() + '>' +
+            '			<input type="hidden" name="UserId" value=' + ENV.current_user_id + '>' +
+            '		</form>' +
+            '	</body>' +
+            '</html>';
+
+        var iframeDocument = document.getElementById(iFrameId).contentDocument;
+        iframeDocument.open();
+        iframeDocument.write(formHtml);
+        iframeDocument.close();
+    }
+
+    getJwtToken(188455, addEnrollmentFunc);
+
+}
+
+function displayEditEnrollment() {
+    var addEnrollmentFunc = function (jwtToken) {
+        var hostname = middlewareBase();
+        var iFrameId = 'editEnrollmentIframe';
+        var modalWidth = '800px';
+        if (screen.width < 1200) { modalWidth = '700px'; }
+        var modalHtml = getModalHtml('Edit Enrollments', iFrameId, '560px', modalWidth);
+
+        $('#content').append(modalHtml);
+        $('#close').click(function () {
+            $('#modal_demo').remove();
+            document.location.reload();
+        });
+        $('#' + iFrameId).attr('style', 'border:0; width:100%;height:440px;');
+
+        var formHtml = '<html>' +
+            '	<body onload="document.forms[0].submit()">' +
+            '		<form action="' + hostname + '/psuLtiPages/PSURosterEdit.aspx" method="POST" >' +
+            '			<input type="hidden" name="JWT" value=' + jwtToken + '>' +
+            '			<input type="hidden" name="CourseId" value=' + getCourseId() + '>' +
+            '			<input type="hidden" name="UserId" value=' + ENV.current_user_id + '>' +
+            '		</form>' +
+            '	</body>' +
+            '</html>';
+
+        var iframeDocument = document.getElementById(iFrameId).contentDocument;
+        iframeDocument.open();
+        iframeDocument.write(formHtml);
+        iframeDocument.close();
+    }
+
+    getJwtToken(188455, addEnrollmentFunc);
+}
+
+/**
+ * Opens the course self-removal dialog box.
+**/
+function displayCourseSelfRemoval() {
+    var closeAndNavigateToDashboardFunc = function () { $('#modal_demo').remove(); window.location.href = location.origin; };
+
+    // Enable iframe buttons (Inactivate & Delete) to close the modal and redirect to the dashboard on click via a postMessage, custom.navigateTo.dashboard
+    // When the modal's 'Close' button is clicked, no redirection will occur.
+    registerMessageEventListener('custom.navigateTo.dashboard', function (message) { closeAndNavigateToDashboardFunc(); });
+
+    openModal('courseSelfRemovalIframe', 'Un-enroll from Course', '560px', '800px', false);
+}
+
+/**
+ * Opens a modal dialog box
+ *
+ * @param {String} iframeId - Id of containing iFrame
+ * @param {String} title - Title of the modal
+ * @param {String} height - Height of the dialog box. The unit must be specified; i.e. 12px, 1em, etc.
+ * @param {String} width - Width of the dialog box. The unit must be specified; i.e. 12px, 1em, etc.
+ * @param {Boolean} enableScrolling - Specifies whether to display scrollbars; defaults to true.
+ * @param {Function} modalClosedCallbackFunc - Function to call when the modal closed event is invoked.
+**/
+function openModal(iFrameId, title, height, width, enableScrolling, modalClosedCallbackFunc) {
+    var modalHtml = getModalHtml(title, iFrameId, height, width);
+    $('#content').append(modalHtml);
+
+    // Register modal closed event on 'Close' button
+    $('#close').click(function () {
+        $('#modal_demo').remove();
+
+        if (typeof modalClosedCallbackFunc !== "undefined") {
+            modalClosedCallbackFunc();
+        }
+    });
+
+    var modalHeader = $('#modal_header');
+    var modalFooter = $('#modal_footer');
+    var modal = $('#modal');
+    var paddingHeight = 30;
+    var adjustedModalHeight = modal.height() - modalHeader.height() - modalFooter.height() - paddingHeight;
+    var hasScrolling = (!enableScrolling ? 'no' : 'auto');
+
+    $('#' + iFrameId).attr('scrolling', hasScrolling).attr('style', 'border:0; width:100%; height:' + adjustedModalHeight + 'px');
+
+    var modalLoadFunc = function (jwtToken) {
+        var formHtml = '<html>' +
+            '	<body onload="document.forms[0].submit()">' +
+            '		<form action="' + middlewareBase() + '/psuLtiPages/EnrollmentSelfRemoval.aspx" method="POST" >' +
+            '			<input type="hidden" name="JWT" value=' + jwtToken + '>' +
+            '			<input type="hidden" name="CourseId" value=' + getCourseId() + '>' +
+            '			<input type="hidden" name="UserId" value=' + ENV.current_user_id + '>' +
+            '		</form>' +
+            '	</body>' +
+            '</html>';
+
+        var iframeDocument = document.getElementById(iFrameId).contentDocument;
+        iframeDocument.open();
+        iframeDocument.write(formHtml);
+        iframeDocument.close();
+    }
+
+    getJwtToken(188455, modalLoadFunc);
+}
+
+function allMatchQuestions() {
+    var allMatchQuestions = document.querySelectorAll("div.matching_question");
+    for (var z = 0; z < allMatchQuestions.length; z++) {
+        var options = allMatchQuestions[z].querySelector("select").options;
+        var list = document.createElement('div');
+        var matchText = document.createElement('div');
+        matchText.style.verticalAign = 'middle';
+        matchText.innerHTML = '<strong>Match Choices:</strong>';
+        for (var t = 0; t < options.length; t++) {
+            if (options[t].textContent !== "[ Choose ]") {
+                temp = document.createElement('div');
+                temp.innerHTML = options[t].text;
+                temp.style.display = 'inline-block';
+                temp.style.padding = '20px';
+                temp.style.maxWidth = '25%';
+                temp.style.verticalAlign = 'Top';
+                list.appendChild(temp);
+            }
+            list.style.width = 'inherit';
+            list.style.border = "thin dotted black";
+            list.style.padding = "0px 0px 0px 10px";
+            var optionsList = allMatchQuestions[z].querySelector(".answers");
+            optionsList.appendChild(matchText);
+            matchText.appendChild(list);
+            var hideOptions = allMatchQuestions[z].querySelectorAll("select");
+            console.log(hideOptions);
+            for (var q = 0; q < hideOptions.length; q++) {
+                var hideChoice = hideOptions[q].querySelector("select");
+                hideOptions[q].style.visibility = "hidden";
+            }
+        }
+    }
+    multiSelectQuestions();
+    printQuizStyle();
+}
+
+function multiSelectQuestions() {
+    var allMultiSelectQuestions = document.querySelectorAll("div.multiple_dropdowns_question select");
+    for (var q = 0; q < allMultiSelectQuestions.length; q++) {
+        var len = allMultiSelectQuestions[q].options.length;
+        allMultiSelectQuestions[q].setAttribute('size', len);
+        allMultiSelectQuestions[q].style.width = 'fit-content';
+        allMultiSelectQuestions[q].style.maxWidth = '';
+    }
+}
+
+function printQuizStyle() {
+    var scale = document.querySelector("div.ic-Layout-contentMain");
+    scale.style.zoom = "74%";
+    var questionBlocks = document.querySelectorAll("div.question_holder");
+    for (var i = 0; i < questionBlocks.length; i++) {
+        questionBlocks[i].style.pageBreakInside = "avoid";
+    }
+    var answerChoices = document.querySelectorAll("div.answer");
+    for (var j = 0; j < answerChoices.length; j++) {
+        answerChoices[j].style.verticalAlign = "Top";
+        answerChoices[j].style.borderTop = "none";
+    }
+
+    //This hides the Submit Quiz footer - delete the /* */ comment tags to hide the footer.
+    /* var formActions = document.querySelectorAll("div.form-actions, div.alert,div.ic-RichContentEditor,div.rce_links");
+    for (var h = 0; h < formActions.length; h++) {
+        formActions[h].style.visibility = "hidden";
+    } */
+    var essayShrink = document.querySelectorAll("div.mce-tinymce");
+    for (var m = 0; m < essayShrink.length; m++) {
+        essayShrink[m].style.height = "200px";
+    }
+
+    // Hide "This is a preview of the published version of the quiz" alert text
+    $('.alert:contains("This is a preview")').css('display', 'none');
+
+    window.print();
+}
+
+/**
+ * Simple JWT parser. Note that it *only* extracts values and doesn't validate the signature.
+**/
+function parseJwt(token) {
+    var base64 = token.split('.')[1].replace('-', '+').replace('_', '/');
+    return JSON.parse(window.atob(base64));
+};
+
+/**
+ * Initializes the Canvas Help page
+**/
+function initCanvasHelpPage() {
+    if ($('#tool_form').attr('data-tool-path') == '/psultipages/canvashelp.aspx') {
+        $('.ic-Layout-wrapper').css('max-width', 'none');
+        registerMessageEventListener('custom.lti.canvasHelp.toggleSideNavMenu', function () { $('#courseMenuToggle').click(); });
+    }
+}
+
+// Hide all LTI tools on the 'Account' menu in the global nav
+var accountMenuChangedEventHandler = null;
+onElementRendered('#global_nav_profile_link', function (elem) {
+    if (accountMenuChangedEventHandler == null) {
+        elem.click(function () {
+            var callback = function () {
+                // Identify and hide any LTI tool
+                onElementRendered('#nav-tray-portal .tray-with-space-for-global-nav ul li a[href*="/external_tools/"]', function (link) {
+                    link.each(function () {
+                        $(this).hide();
+                    });
+                });
+            };
+
+            // Monitor for any changes to the menu by Canvas' React UI
+            accountMenuChangedEventHandler = new MutationObserver(callback).observe(document.getElementById('nav-tray-portal'), { childList: true, subtree: true });
+        });
+    }
+});
+
+function setSession(sname) {
+    var now = new Date();
+    sessionStorage.setItem(sname, now);
+}
+
+function checkSession(sname) {
+    var session = sessionStorage.getItem(sname);
+    if (session === undefined || session == null || session.length <= 0) {
+        return "true";
+    } else {
+        var lastRun = new Date(session);
+        var now = new Date();
+        var difference = now - lastRun;
+
+        if ((difference) <= 1800000) {
+            return "false";
+        }
+        else {
+            return "true";
+        }
+    }
+}
+
+window.ALLY_CFG = {
+    'baseUrl': 'https://prod.ally.ac',
+    'clientId': 12767,
+    'lti13Id': '10500000000000677'
+};
+$.getScript(ALLY_CFG.baseUrl + '/integration/canvas/ally.js');

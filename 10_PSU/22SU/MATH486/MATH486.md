@@ -14,9 +14,9 @@ date updated: 20220705 11:50
 
 [[20220524486video intro]]
 
-## [[486Lesson 1|Lesson 1]]
+## [[486L1|Lesson 1]]
 
-Introduction and Overview [[486Lesson 1]] Backward Induction, Extensive and Normal Form Games
+Introduction and Overview [[486L1]] Backward Induction, Extensive and Normal Form Games
 
 [[20220524486HW1]]
 
@@ -26,7 +26,7 @@ Introduction and Overview [[486Lesson 1]] Backward Induction, Extensive and Norm
 
 {4/5}
 
-## [[486Lesson 2]]
+## [[486L2]]
 
 Continuous Strategy Games, Stackelberg Duopoly, Dominated Strategies, Prisonerâ€™s Dilemma
 
@@ -38,7 +38,7 @@ Continuous Strategy Games, Stackelberg Duopoly, Dominated Strategies, Prisonerâ€
 
 {4/5}
 
-## [[486Lesson 3]]
+## [[486L3]]
 
 Auctions, Iterated Elimination of Dominated Strategies
 
@@ -50,15 +50,15 @@ Auctions, Iterated Elimination of Dominated Strategies
 
 {3/5}
 
-## [[486Lesson 4]]
+## [[10_PSU/22SU/MATH486/486L4/486L4]]
 
 Nash equilibrium, Cournot Duopoly, Applications
 
-## [[486Lesson 5]]
+## [[486L5]]
 
 Lotteries, Incomplete Information, Mixed Strategies
 
-## [[486Lesson 6]]
+## [[486L6]]
 
 Mixed Strategy Nash Equilibria, Applications
 
