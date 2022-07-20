@@ -4,7 +4,7 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220720 07:06
+date updated: 20220720 07:45
 ---
 
 # STAT200_知识点C3&C4
@@ -27,3 +27,6 @@ Classical​ (or theoretical) probability is used when each outcome in a sample
 
 The expected value is the sum of the values for x multiplied by their respective probabilities. The expected value does not have to be equal to one of the possible values for x.
 
+## Discrete or Continuous random​ Variable
+
+![[Pasted image 20220720194555.png]]
