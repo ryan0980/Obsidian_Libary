@@ -24,3 +24,6 @@ Classical​ (or theoretical) probability is used when each outcome in a sample
 ## Discrete Probability Distribution
 
 ![[Pasted image 20220720190636.png]]
+
+The expected value is the sum of the values for x multiplied by their respective probabilities. The expected value does not have to be equal to one of the possible values for x.
+
