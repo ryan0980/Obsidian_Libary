@@ -3,7 +3,6 @@ title: IT
 aliases: 
 rating:  7
 tags: 电影
-rating: 
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
 date updated: 

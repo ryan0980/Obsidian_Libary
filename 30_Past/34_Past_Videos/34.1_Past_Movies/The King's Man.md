@@ -3,9 +3,9 @@
 aliases: 
 rating:  
 tags: 电影
-rating: 6
+rating: 6.5
 author: tusrau
-date created: '{{date:YYYYMMDD HH:mm}}'
+date created: 20220627 13:33 
 date updated: 
 ---
 

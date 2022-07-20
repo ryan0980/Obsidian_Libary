@@ -1,5 +1,4 @@
 ---
-title: {{title}}
 aliases: 
 tags:
 author: tusrau

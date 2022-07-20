@@ -1,7 +1,5 @@
 ---
-title: {{title}}
 aliases: 
-rating:
 tags:
   - 学习/Obsidian
 date created: '{{date:YYYYMMDD HH:mm}}'
