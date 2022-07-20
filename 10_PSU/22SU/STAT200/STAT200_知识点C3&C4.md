@@ -4,7 +4,7 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220715 02:33
+date updated: 20220720 07:06
 ---
 
 # STAT200_知识点C3&C4
@@ -20,3 +20,7 @@ Classical​ (or theoretical) probability is used when each outcome in a sample
 ## Mutually Exclusive
 
 ![[Pasted image 20220715023314.png]]
+
+## Discrete Probability Distribution
+
+![[Pasted image 20220720190636.png]]
