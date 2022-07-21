@@ -39,3 +39,6 @@ The expected value is the sum of the values for x multiplied by their respective
 
 ![[Pasted image 20220720223805.png]]
 ![[Pasted image 20220720223753.png]]
+
+
+![[Pasted image 20220720225334.png]]
