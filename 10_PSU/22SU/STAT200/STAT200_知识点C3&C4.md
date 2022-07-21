@@ -4,7 +4,7 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220720 07:45
+date updated: 20220720 08:02
 ---
 
 # STAT200_知识点C3&C4
@@ -30,3 +30,7 @@ The expected value is the sum of the values for x multiplied by their respective
 ## Discrete or Continuous random​ Variable
 
 ![[Pasted image 20220720194555.png]]
+
+## Skewed
+
+![[Pasted image 20220720200208.png]]
