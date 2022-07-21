@@ -4,7 +4,7 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220720 08:02
+date updated: 20220720 10:37
 ---
 
 # STAT200_知识点C3&C4
@@ -34,3 +34,8 @@ The expected value is the sum of the values for x multiplied by their respective
 ## Skewed
 
 ![[Pasted image 20220720200208.png]]
+
+## Distribution a Discrete probability​ Distribution
+
+![[Pasted image 20220720223805.png]]
+![[Pasted image 20220720223753.png]]
