@@ -4,7 +4,7 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220720 10:37
+date updated: 20220720 10:53
 ---
 
 # STAT200_知识点C3&C4
@@ -39,6 +39,5 @@ The expected value is the sum of the values for x multiplied by their respective
 
 ![[Pasted image 20220720223805.png]]
 ![[Pasted image 20220720223753.png]]
-
 
 ![[Pasted image 20220720225334.png]]
