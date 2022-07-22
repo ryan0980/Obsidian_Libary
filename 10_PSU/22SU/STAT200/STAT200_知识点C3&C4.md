@@ -4,12 +4,16 @@ aliases:
 tags:
 author: tusrau
 date created: '{{date:YYYYMMDD HH:mm}}'
-date updated: 20220720 10:53
+date updated: 20220721 10:29
 ---
 
 # STAT200_知识点C3&C4
 
 The definition of the complement of an event is the set of all outcomes in a sample space that are not included in an event E.
+
+## Skewed Right Skewed Left
+
+![[Pasted image 20220721222923.png]]
 
 ![[Pasted image 20220715002154.png]]
 
